@@ -2,7 +2,7 @@
 
 namespace Volunteer_Management_System.Controllers
 {
-    public class AdminController : Controller
+    public class AccountController : Controller
     {
         public IActionResult Index()
         {
