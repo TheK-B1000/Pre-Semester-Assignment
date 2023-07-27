@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Volunteer_Management_System.Models;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
-var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IPersonRespository, FakePersonRepository>();
 
 var app = builder.Build();
 
