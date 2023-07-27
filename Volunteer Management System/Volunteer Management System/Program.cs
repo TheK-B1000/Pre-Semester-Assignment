@@ -25,6 +25,10 @@ app.UseAuthorization();
 
 app.MapGet("/hi", () => "Hello There!");
 
+app.MapControllerRoute(
+ name: "default",
+ pattern: "{controller=Person}/{action=List}/{id?}");
+
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
 
