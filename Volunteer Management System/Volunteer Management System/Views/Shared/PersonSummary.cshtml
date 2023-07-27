@@ -1,0 +1,19 @@
+﻿@model Person
+
+<div class="card m-3 rounded">
+    <div class="card-block m-2">
+        <h3>
+            <strong>PersonID: @Model.PersonID</strong>
+            <strong>Name: @Model.FirstName @Model.LastName</strong>
+            <h4>Username: @Model.Username</h4>
+            <h4>Password: @Model.Password</h4>
+            <h4>Email: @Model.Email</h4>
+            <h4>Address: @Model.Address</h4>
+            <h4>Phone Number: @Model.PhoneNumbers</h4> <br>
+            <span class="float-right bg-success text-white rounded m-2 p-1">
+                Role: @Model.Role
+            </span>
+        </h3>
+        <span class="lead">@Model.Role</span>
+    </div>
+</div>
