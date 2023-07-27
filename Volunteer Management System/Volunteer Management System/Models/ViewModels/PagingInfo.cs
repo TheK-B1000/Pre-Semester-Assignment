@@ -10,7 +10,7 @@ namespace Volunteer_Management_System.Models.ViewModels
         public int TotalItems { get; set; }
         public int ItemsPerPage { get; set; }
         public int CurrentPage { get; set; }
-42 
+ 
  public int TotalPages => (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
     }
 }
