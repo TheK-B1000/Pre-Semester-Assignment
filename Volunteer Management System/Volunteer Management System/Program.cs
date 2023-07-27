@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<IPersonRespository, FakePersonRepository>();
+builder.Services.AddTransient<IPersonRepository, FakePersonRepository>();
 
 var app = builder.Build();
 
