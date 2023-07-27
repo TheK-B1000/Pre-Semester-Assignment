@@ -3,9 +3,10 @@
 @foreach (var person in Model)
 {
     <div>
-        <h4>@person.PersonID</h4>
-        <h4>@person.FirstName @person.LastName</h4>
-        <h4>@person.Username @person.Password</h4>
+        <h4>PersonID: @person.PersonID</h4>
+        <h4>Name: @person.FirstName @person.LastName</h4>
+        <h4>Username: @person.Username</h4>
+        <h4>Password: @person.Password</h4>
         <h4>Email: @person.Email</h4>
         <h4>Address: @person.Address</h4>
         <h4>Phone Number: @person.PhoneNumbers</h4>
