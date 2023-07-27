@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Person>
+﻿@model PeopleListViewModel
 
-@foreach (var person in Model)
+@foreach (var person in Model.People)
 {
     <div>
         <h4>PersonID: @person.PersonID</h4>
