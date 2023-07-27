@@ -17,7 +17,7 @@ namespace Volunteer_Management_System.Components
         }
         public IViewComponentResult Invoke()
         {
-            ViewBag.SelectedCategory = RouteData?.Values["approval"];
+            ViewBag.SelectedApproval = RouteData?.Values["approval"];
             return View(repository.People
             .Select(x => x.Approval)
             .Distinct()

@@ -13,7 +13,7 @@
 {
     <div class="row">
         <a class="btn btn-block m-2
-            @(approval == ViewBag.SelectedCategory ? "btn-primary": "btn-outline-dark")"
+            @(approval == ViewBag.SelectedApproval ? "btn-primary": "btn-outline-dark")"
             asp-action="List"
             asp-controller="Person"
             asp-route-category="@approval"

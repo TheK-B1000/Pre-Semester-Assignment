@@ -9,6 +9,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IPersonRepository, FakePersonRepository>();
 
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,6 +56,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
  name: "default",
  pattern: "{controller=Person}/{action=List}/{id?}");
+
+app.UseSession();
 
 app.MapDefaultControllerRoute();
 app.MapRazorPages();

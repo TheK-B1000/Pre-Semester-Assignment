@@ -34,7 +34,10 @@ namespace Volunteer_Management_System.Controllers
                  {
                      CurrentPage = page,
                      ItemsPerPage = PageSize,
-                     TotalItems = repository.People.Count()
+                     TotalItems = approval == null ?
+                        repository.People.Count() :
+                        repository.People.Where(e =>
+                            e.Approval == approval).Count()
                  },
                 CurrentApproval = approval
             });
