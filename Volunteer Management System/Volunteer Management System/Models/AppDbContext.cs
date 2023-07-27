@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Volunteer_Management_System.Models;
 //using System.Collections.Generic;
 
-namespace SportsStore.Models
+namespace VolunteerManagementSystem.Models
 {
     public class AppDbContext : DbContext
     {
