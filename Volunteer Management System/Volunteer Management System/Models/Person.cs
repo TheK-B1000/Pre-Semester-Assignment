@@ -8,7 +8,7 @@ namespace Volunteer_Management_System.Models
 {
     public class Person
     {
-        public int PersonID { get; set; }
+        public string PersonID { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -49,7 +49,7 @@ namespace Volunteer_Management_System.Models
 
     public class Opportunity
     {
-        public int OpportunityID { get; set; }
+        public string OpportunityID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Volunteer_Management_System.Models
 {
-    public interface IAdminRespository
+    public interface IPersonRespository
     {
         IEnumerable<Person> People { get; }
     }
