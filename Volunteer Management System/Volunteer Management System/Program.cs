@@ -26,6 +26,11 @@ app.UseAuthorization();
 app.MapGet("/hi", () => "Hello There!");
 
 app.MapControllerRoute(
+ name: "pagination",
+ pattern: "People/Page{page}",
+ defaults: new { Controller = "Person", action = "List" });
+
+app.MapControllerRoute(
  name: "default",
  pattern: "{controller=Person}/{action=List}/{id?}");
 
