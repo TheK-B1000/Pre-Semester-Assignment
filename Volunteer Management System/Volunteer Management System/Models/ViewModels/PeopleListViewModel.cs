@@ -9,5 +9,7 @@ namespace Volunteer_Management_System.Models.ViewModels
     {
         public IEnumerable<Person> People { get; set; }
         public PagingInfo PagingInfo { get; set; }
+
+        public string CurrentCategory { get; set; }
     }
 }

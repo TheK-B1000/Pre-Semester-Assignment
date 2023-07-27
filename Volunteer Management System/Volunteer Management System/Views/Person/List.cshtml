@@ -1,23 +1,8 @@
 ﻿@model PeopleListViewModel
 
-@foreach (var person in Model.People)
+@foreach (var p in Model.People)
 {
-    <div class="card m-3 rounded">
-        <div class="card-block m-2">
-            <h3>
-                <strong>PersonID: @person.PersonID</strong>
-                <strong>Name: @person.FirstName @person.LastName</strong>
-                <h4>Username: @person.Username</h4>
-                <h4>Password: @person.Password</h4>
-                <h4>Email: @person.Email</h4>
-                <h4>Address: @person.Address</h4>
-                <h4>Phone Number: @person.PhoneNumbers</h4> <br>
-                <span class="float-right bg-success text-white rounded m-2 p-1">
-                    Role: @person.Role
-                </span>
-            </h3>
-        </div>
-    </div>
+    @Html.Partial("PersonSummary", p)
 }
 
 <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
