@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Volunteer_Management_System.Models
 {
-    public class FakePersonRepository : IPersonRespository
+    public class FakePersonRepository : IPersonRepository
     {
         public IEnumerable<Person> People => new List<Person>
         {
