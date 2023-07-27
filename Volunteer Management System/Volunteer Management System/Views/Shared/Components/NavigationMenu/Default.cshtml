@@ -1,0 +1,24 @@
+﻿@model IEnumerable<string>
+
+<div class="row">
+    <a class="btn btn-outline-dark btn-block m-2"
+       asp-action="List"
+       asp-controller="Person"
+       asp-route-category="">
+        Home
+    </a>
+</div>
+
+@foreach (string approval in Model)
+{
+    <div class="row">
+        <a class="btn btn-block m-2
+            @(approval == ViewBag.SelectedCategory ? "btn-primary": "btn-outline-dark")"
+            asp-action="List"
+            asp-controller="Person"
+            asp-route-category="@approval"
+            asp-route-page="1">
+            @approval
+        </a>
+    </div>
+}
