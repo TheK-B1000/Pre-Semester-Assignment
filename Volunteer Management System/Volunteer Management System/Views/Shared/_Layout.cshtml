@@ -3,16 +3,23 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="lib/bootstrap/dist/css/*.min.css" />
     <title>Volunteer Managment System</title>
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
+    <nav class="navbar navbar-inverse bg-info">
+        <a class="navbar-brand text-white" href="#">VOLUNTEER MANAGMENT SYSTEM</a>
+    </nav>
     <div class="container">
-        <div class="page-content">
-            @RenderBody()
+        <div class="row">
+            <div class="col col-md-3">
+                Put something useful here later
+            </div>
+            <div class="col col-md-9">
+                 @RenderBody()
+            </div>
         </div>
-    </div>
-    <div>
     </div>
 </body>
 </html>
