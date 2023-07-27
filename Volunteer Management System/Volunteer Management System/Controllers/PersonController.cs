@@ -22,19 +22,21 @@ namespace Volunteer_Management_System.Controllers
             repository = repo;
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string approval, int page = 1)
             => View(new PeopleListViewModel
             {
                  People = repository.People
-                            .OrderBy(p => p.PersonID)
-                            .Skip((page - 1) * PageSize)
-                            .Take(PageSize),
+                    .Where(p => approval == null || p.Approval == approval)
+                    .OrderBy(p => p.PersonID)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),
                  PagingInfo = new PagingInfo
                  {
                      CurrentPage = page,
                      ItemsPerPage = PageSize,
                      TotalItems = repository.People.Count()
-                 }
-             });
+                 },
+                CurrentApproval = approval
+            });
     }
 }

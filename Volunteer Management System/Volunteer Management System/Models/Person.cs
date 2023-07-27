@@ -25,6 +25,8 @@ namespace Volunteer_Management_System.Models
         public string Email { get; set; }
         [Required]
         public string Role { get; set; } // To indicate whether the person is an 'Admin' or 'Volunteer'
+
+        public string Approval { get; set; }
     }
 
     public class Admin : Person
