@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Opportunity Details";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 bg-light sidebar">
+            <div class="sidebar-sticky">
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h1 class="h2">Opportunity Details</h1>
+
+            <!-- Opportunity Information Section -->
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h6 class="mb-0">Opportunity Information</h6>
+
+                <!-- Opportunity details fields -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label>Opportunity Name</label>
+                        <p>@Model.OpportunityName</p>
+                        <label>Center</label>
+                        <p>@Model.Center</p> 
+                    </div>
+                    <div class="col-md-6">
+                        <label>Start Date</label>
+                        <p>@Model.StartDate</p>
+                        <label>End Date</label>
+                        <p>@Model.EndDate</p> 
+                    </div>
+                </div>
+
+                <!-- Edit and Delete buttons -->
+                <div class="d-flex justify-content-end">
+                    <a href="#" class="btn btn-primary">Edit Opportunity</a>
+                    <a href="#" class="btn btn-danger ml-3">Delete Opportunity</a> <!-- TODO add delete functionality -->
+                </div>
+            </div>
+
+            <!-- Volunteer Matches Section -->
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h6 class="mb-0">Volunteer Matches</h6>
+
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <a href="#">Volunteer Name</a> <!-- TODO add sorting functionality -->
+                            </th>
+                            <th scope="col">
+                                <a href="#">Preferred Center</a> <!-- TODO add sorting functionality -->
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Volunteer matches list here -->
+                        <!-- Example: -->
+                        <tr>
+                            <td>John Doe</td>
+                            <td>Main Center</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
