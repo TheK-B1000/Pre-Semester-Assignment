@@ -17,9 +17,9 @@ namespace Volunteer_Management_System.Components
         }
         public IViewComponentResult Invoke()
         {
-            ViewBag.SelectedApproval = RouteData?.Values["approval"];
+            ViewBag.SelectedRole = RouteData?.Values["role"];
             return View(repository.People
-            .Select(x => x.Approval)
+            .Select(x => x.Role)
             .Distinct()
             .OrderBy(x => x));
         }

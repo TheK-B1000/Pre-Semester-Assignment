@@ -22,11 +22,11 @@ namespace Volunteer_Management_System.Controllers
             repository = repo;
         }
 
-        public ViewResult List(string approval, int page = 1)
+        public ViewResult List(string role, int page = 1)
             => View(new PeopleListViewModel
             {
                  People = repository.People
-                    .Where(p => approval == null || p.Approval == approval)
+                    .Where(p => role == null || p.Role == role)
                     .OrderBy(p => p.PersonID)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize),
@@ -34,12 +34,12 @@ namespace Volunteer_Management_System.Controllers
                  {
                      CurrentPage = page,
                      ItemsPerPage = PageSize,
-                     TotalItems = approval == null ?
+                     TotalItems = role == null ?
                         repository.People.Count() :
                         repository.People.Where(e =>
-                            e.Approval == approval).Count()
+                            e.Role == role).Count()
                  },
-                CurrentApproval = approval
+                CurrentRole = role
             });
     }
 }
