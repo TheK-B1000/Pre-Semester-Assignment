@@ -25,14 +25,12 @@ namespace Volunteer_Management_System.Models
         public string Email { get; set; }
         [Required]
         public string Role { get; set; } // To indicate whether the person is an 'Admin' or 'Volunteer'
-
-        public string Approval { get; set; }
     }
 
     public class Admin : Person
     {
         [Required]
-        public string ApprovalStatus { get; set; }
+        public string Title { get; set; }
     }
 
     public class Volunteer : Person
@@ -49,21 +47,5 @@ namespace Volunteer_Management_System.Models
         public bool SocialSecurityCardOnFile { get; set; }
     }
 
-    public class Opportunity
-    {
-        public string OpportunityID { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Description { get; set; }
-        [Required]
-        public string Center { get; set; }
-        [Required]
-        public DateTime Date { get; set; }
-        [Required]
-        public TimeSpan Duration { get; set; }
-        [Required]
-        public int MaximumVolunteers { get; set; }
-        public int CurrentVolunteers { get; set; }
-    }
+  
 }
