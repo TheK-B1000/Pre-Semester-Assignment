@@ -3,7 +3,7 @@
 namespace Volunteer_Management_System.Models
 {
     
-    public class EFVolunteerRepository
+    public class EFVolunteerRepository : IVolunteerRepository
     {
         private AppDbContext context;
         public EFVolunteerRepository(AppDbContext ctx)
