@@ -46,6 +46,12 @@ namespace Volunteer_Management_System.Models
         public bool DriversLicenseOnFile { get; set; }
         public bool SocialSecurityCardOnFile { get; set; }
     }
+    public class FilterOptions
+    {
+        public string Name { get; set; }
+        public string Center { get; set; }
+        public string Date { get; set; }
 
-  
+    }
+
 }
