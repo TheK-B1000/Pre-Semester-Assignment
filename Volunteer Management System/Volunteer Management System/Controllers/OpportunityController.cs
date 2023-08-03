@@ -15,7 +15,6 @@ namespace Volunteer_Management_System.Controllers
             _opportunityRepository = opportunityRepository;
         }
 
-        // Basic flow actions
         public IActionResult ManageOpportunities()
         {
             var opportunities = _opportunityRepository.Opportunities;
@@ -24,7 +23,7 @@ namespace Volunteer_Management_System.Controllers
 
         public IActionResult ChangeOpportunityFilter(string filter)
         {
-            var opportunities = _opportunityRepository.Opportunities;  // apply filter logic here
+            var opportunities = _opportunityRepository.Opportunities; 
             return View("ManageOpportunities", opportunities);
         }
 
@@ -73,10 +72,9 @@ namespace Volunteer_Management_System.Controllers
             return RedirectToAction("ManageOpportunities");
         }
 
-        // Alternative flow actions
         public IActionResult SearchOpportunities(string query)
         {
-            var opportunities = _opportunityRepository.Opportunities;  // apply search logic here
+            var opportunities = _opportunityRepository.Opportunities; 
             return View("ManageOpportunities", opportunities);
         }
 
