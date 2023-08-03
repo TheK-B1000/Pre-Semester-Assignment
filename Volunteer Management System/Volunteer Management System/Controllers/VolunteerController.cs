@@ -1,76 +1,79 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Volunteer_Management_System.Models;
-using Volunteer_Management_System.Services;
-using System.Collections.Generic;
 
 namespace Volunteer_Management_System.Controllers
 {
     public class VolunteerController : Controller
     {
-        private readonly IVolunteerService _volunteerService;
+        private readonly IVolunteerRepository _volunteerRepository;
 
-        public VolunteerController(IVolunteerService volunteerService)
+        public VolunteerController(IVolunteerRepository volunteerRepository)
         {
-            _volunteerService = volunteerService;
+            _volunteerRepository = volunteerRepository;
         }
 
-        public IActionResult Index(string searchTerm)
+        // Basic flow actions
+        public IActionResult ManageVolunteers()
         {
-            var volunteers = _volunteerService.GetVolunteers(searchTerm);
+            var volunteers = _volunteerRepository.Volunteers;
             return View(volunteers);
         }
 
-        public IActionResult ViewMatches(string volunteerId)
+        public IActionResult ChangeVolunteerFilter(string filter)
         {
-            var opportunities = _volunteerService.GetOpportunityMatches(volunteerId);
-            return View(opportunities);
+            var volunteers = _volunteerRepository.Volunteers;  // apply filter logic here
+            return View("ManageVolunteers", volunteers);
         }
 
-        public IActionResult Edit(string volunteerId)
+        public IActionResult EditVolunteer(string id)
         {
-            var volunteer = _volunteerService.GetVolunteer(volunteerId);
+            var volunteer = _volunteerRepository.Volunteers.FirstOrDefault(v => v.PersonID == id);
+            if (volunteer == null)
+            {
+                return NotFound();
+            }
+
             return View(volunteer);
         }
 
         [HttpPost]
-        public IActionResult Edit(Volunteer volunteer)
+        public IActionResult EditVolunteer(Volunteer volunteer)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _volunteerService.UpdateVolunteer(volunteer);
-                return RedirectToAction("Index");
+                // Save the edited volunteer data
             }
-            catch
-            {
-                ViewBag.Message = "An error occurred while trying to update the volunteer. Please try again.";
-                return View(volunteer);
-            }
+
+            return RedirectToAction("ManageVolunteers");
         }
 
-        public IActionResult Create()
+        public IActionResult AddVolunteer()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Volunteer volunteer)
+        public IActionResult AddVolunteer(Volunteer volunteer)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _volunteerService.AddVolunteer(volunteer);
-                return RedirectToAction("Index");
+                // Add the new volunteer data
             }
-            catch
-            {
-                ViewBag.Message = "An error occurred while trying to add the volunteer. Please try again.";
-                return View(volunteer);
-            }
+
+            return RedirectToAction("ManageVolunteers");
         }
 
-        public IActionResult Delete(string volunteerId)
+        // Alternative flow actions
+        public IActionResult SearchVolunteers(string query)
         {
-            _volunteerService.DeleteVolunteer(volunteerId);
-            return RedirectToAction("Index");
+            var volunteers = _volunteerRepository.Volunteers;  // apply search logic here
+            return View("ManageVolunteers", volunteers);
         }
+
+        // ...additional actions for other alternative flows
     }
 }
+
