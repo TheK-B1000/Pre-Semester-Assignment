@@ -15,7 +15,6 @@ namespace Volunteer_Management_System.Controllers
             _volunteerRepository = volunteerRepository;
         }
 
-        // Basic flow actions
         public IActionResult ManageVolunteers()
         {
             var volunteers = _volunteerRepository.Volunteers;
@@ -24,7 +23,7 @@ namespace Volunteer_Management_System.Controllers
 
         public IActionResult ChangeVolunteerFilter(string filter)
         {
-            var volunteers = _volunteerRepository.Volunteers;  // apply filter logic here
+            var volunteers = _volunteerRepository.Volunteers; 
             return View("ManageVolunteers", volunteers);
         }
 
@@ -66,14 +65,12 @@ namespace Volunteer_Management_System.Controllers
             return RedirectToAction("ManageVolunteers");
         }
 
-        // Alternative flow actions
         public IActionResult SearchVolunteers(string query)
         {
-            var volunteers = _volunteerRepository.Volunteers;  // apply search logic here
+            var volunteers = _volunteerRepository.Volunteers; 
             return View("ManageVolunteers", volunteers);
         }
 
-        // ...additional actions for other alternative flows
     }
 }
 
