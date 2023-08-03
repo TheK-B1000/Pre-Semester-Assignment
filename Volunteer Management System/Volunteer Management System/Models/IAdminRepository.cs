@@ -7,6 +7,6 @@ namespace Volunteer_Management_System.Models
 {
     public interface IAdminRepository
     {
-        IEnumerable<Person> People { get; }
+        IEnumerable<Admin> Admins { get; }
     }
 }

@@ -11,7 +11,7 @@ namespace Volunteer_Management_System.Models
         {
             context = ctx;
         }
-        public IEnumerable<Adminn> Admin => context.Admin;
+        public IEnumerable<Admin> Admins => context.Admins;
     }
 
 }
