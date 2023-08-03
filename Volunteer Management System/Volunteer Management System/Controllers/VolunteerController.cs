@@ -23,7 +23,7 @@ namespace Volunteer_Management_System.Controllers
 
         public IActionResult ChangeVolunteerFilter(string filter)
         {
-            var volunteers = _volunteerRepository.Volunteers; 
+            var volunteers = _volunteerRepository.FilterVolunteers(filter);
             return View("ManageVolunteers", volunteers);
         }
 
@@ -43,7 +43,7 @@ namespace Volunteer_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Save the edited volunteer data
+                _volunteerRepository.UpdateVolunteer(volunteer);
             }
 
             return RedirectToAction("ManageVolunteers");
@@ -59,18 +59,22 @@ namespace Volunteer_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Add the new volunteer data
+                _volunteerRepository.AddVolunteer(volunteer);
             }
 
             return RedirectToAction("ManageVolunteers");
         }
 
-        public IActionResult SearchVolunteers(string query)
+        public IActionResult DeleteVolunteer(string id)
         {
-            var volunteers = _volunteerRepository.Volunteers; 
-            return View("ManageVolunteers", volunteers);
+            _volunteerRepository.DeleteVolunteer(id);
+            return RedirectToAction("ManageVolunteers");
         }
 
+        public IActionResult SearchVolunteers(string query)
+        {
+            var volunteers = _volunteerRepository.SearchVolunteers(query);
+            return View("ManageVolunteers", volunteers);
+        }
     }
 }
-
