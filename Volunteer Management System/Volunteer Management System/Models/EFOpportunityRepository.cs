@@ -4,14 +4,14 @@ using Volunteer_Management_System.Models;
 namespace Volunteer_Management_System.Models
 {
 
-    public class EFAdminRepository : IAdminRepository
+    public class EFOpportunityRepository : IOpportunityRepository
     {
         private AppDbContext context;
-        public EFAdminRepository(AppDbContext ctx)
+        public EFOpportunityRepository(AppDbContext ctx)
         {
             context = ctx;
         }
-        public IEnumerable<Adminn> Admin => context.Admin;
+        public IEnumerable<Opportunity> Opportunities => context.Opportunities;
     }
 
 }
