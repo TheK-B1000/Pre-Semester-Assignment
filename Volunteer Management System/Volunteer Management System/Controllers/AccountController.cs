@@ -1,20 +1,27 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Volunteer_Management_System.Models;
-using Volunteer_Management_System.Services;
 
 namespace Volunteer_Management_System.Controllers
 {
-    public class AccountController : Controller
+    public class AdminController : Controller
     {
-        private readonly IAccountService _accountService;
+        private readonly IAdminRepository _adminRepository;
 
-        public AccountController(IAccountService accountService)
+        public AdminController(IAdminRepository adminRepository)
         {
-            _accountService = accountService;
+            _adminRepository = adminRepository;
+        }
+
+        public IActionResult ManageAdmins()
+        {
+            var admins = _adminRepository.Admins;
+            return View(admins);
         }
 
         [HttpGet]
@@ -28,7 +35,7 @@ namespace Volunteer_Management_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isValidUser = _accountService.ValidateCredentials(admin.Username, admin.Password);
+                var isValidUser = _adminRepository.Admins.Any(a => a.Username == admin.Username && a.Password == admin.Password);
 
                 if (isValidUser)
                 {
@@ -41,7 +48,7 @@ namespace Volunteer_Management_System.Controllers
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ManageAdmins");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
@@ -52,12 +59,12 @@ namespace Volunteer_Management_System.Controllers
 
         public IActionResult ManageVolunteers()
         {
-            return RedirectToAction("Index", "Volunteer");
+            return RedirectToAction("ManageVolunteers", "Volunteer");
         }
 
         public IActionResult ManageOpportunities()
         {
-            return RedirectToAction("Index", "Opportunity");
+            return RedirectToAction("ManageOpportunities", "Opportunity");
         }
 
         public async Task<IActionResult> Logout()
