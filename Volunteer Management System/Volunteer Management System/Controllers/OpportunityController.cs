@@ -1,78 +1,85 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Volunteer_Management_System.Models;
-using Volunteer_Management_System.Services;
-using System.Collections.Generic;
 
 namespace Volunteer_Management_System.Controllers
 {
     public class OpportunityController : Controller
     {
-        private readonly IOpportunityService _opportunityService;
+        private readonly IOpportunityRepository _opportunityRepository;
 
-        public OpportunityController(IOpportunityService opportunityService)
+        public OpportunityController(IOpportunityRepository opportunityRepository)
         {
-            _opportunityService = opportunityService;
+            _opportunityRepository = opportunityRepository;
         }
 
-        public IActionResult Index(FilterOptions filterOptions)
+        // Basic flow actions
+        public IActionResult ManageOpportunities()
         {
-            var opportunities = _opportunityService.GetOpportunities(filterOptions);
+            var opportunities = _opportunityRepository.Opportunities;
             return View(opportunities);
         }
 
-        public IActionResult Search(string keyword)
+        public IActionResult ChangeOpportunityFilter(string filter)
         {
-            var opportunities = _opportunityService.Search(keyword);
-            if (opportunities == null)
+            var opportunities = _opportunityRepository.Opportunities;  // apply filter logic here
+            return View("ManageOpportunities", opportunities);
+        }
+
+        public IActionResult EditOpportunity(string id)
+        {
+            var opportunity = _opportunityRepository.Opportunities.FirstOrDefault(o => o.OpportunityID == id);
+            if (opportunity == null)
             {
-                ViewBag.Message = "No opportunities matched your search criteria.";
+                return NotFound();
             }
-            return View(opportunities);
-        }
 
-        public IActionResult ViewMatches(string opportunityId)
-        {
-            var volunteers = _opportunityService.GetMatches(opportunityId);
-            return View(volunteers);
-        }
-
-        public IActionResult Edit(string opportunityId)
-        {
-            var opportunity = _opportunityService.GetOpportunity(opportunityId);
             return View(opportunity);
         }
 
         [HttpPost]
-        public IActionResult Edit(Opportunity opportunity)
+        public IActionResult EditOpportunity(Opportunity opportunity)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _opportunityService.UpdateOpportunity(opportunity);
-                return RedirectToAction("Index");
+                // Save the edited opportunity data
             }
-            catch
-            {
-                ViewBag.Message = "An error occurred while trying to update the opportunity. Please try again.";
-                return View(opportunity);
-            }
+
+            return RedirectToAction("ManageOpportunities");
         }
 
-        public IActionResult Create()
+        public IActionResult AddOpportunity()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Opportunity opportunity)
+        public IActionResult AddOpportunity(Opportunity opportunity)
         {
-            _opportunityService.AddOpportunity(opportunity);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                // Add the new opportunity data
+            }
+
+            return RedirectToAction("ManageOpportunities");
         }
 
-        public IActionResult Delete(string opportunityId)
+        public IActionResult DeleteOpportunity(int id)
         {
-            _opportunityService.DeleteOpportunity(opportunityId);
-            return RedirectToAction("Index");
+            // Delete the opportunity data
+
+            return RedirectToAction("ManageOpportunities");
         }
+
+        // Alternative flow actions
+        public IActionResult SearchOpportunities(string query)
+        {
+            var opportunities = _opportunityRepository.Opportunities;  // apply search logic here
+            return View("ManageOpportunities", opportunities);
+        }
+
     }
 }
+
