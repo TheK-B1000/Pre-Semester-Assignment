@@ -19,32 +19,45 @@ namespace Volunteer_Management_System.Models
 
         public void AddOpportunity(Opportunity opportunity)
         {
-            // Implement the method to add an opportunity
-            throw new NotImplementedException();
+            context.Opportunities.Add(opportunity);
+            context.SaveChanges();
         }
 
         public void UpdateOpportunity(Opportunity opportunity)
         {
-            // Implement the method to update an opportunity
-            throw new NotImplementedException();
+            var opportunityToUpdate = context.Opportunities.FirstOrDefault(o => o.OpportunityID == opportunity.OpportunityID);
+            if (opportunityToUpdate != null)
+            {
+                opportunityToUpdate.Name = opportunity.Name;
+                opportunityToUpdate.Description = opportunity.Description;
+                opportunityToUpdate.Center = opportunity.Center;
+                opportunityToUpdate.Date = opportunity.Date;
+                opportunityToUpdate.Duration = opportunity.Duration;
+                opportunityToUpdate.MaximumVolunteers = opportunity.MaximumVolunteers;
+                opportunityToUpdate.CurrentVolunteers = opportunity.CurrentVolunteers;
+
+                context.SaveChanges();
+            }
         }
 
         public void DeleteOpportunity(string OpportunityID)
         {
-            // Implement the method to delete an opportunity
-            throw new NotImplementedException();
+            var opportunityToDelete = context.Opportunities.FirstOrDefault(o => o.OpportunityID == OpportunityID);
+            if (opportunityToDelete != null)
+            {
+                context.Opportunities.Remove(opportunityToDelete);
+                context.SaveChanges();
+            }
         }
 
         public IEnumerable<Opportunity> FilterOpportunities(string filter)
         {
-            // Implement the method to filter opportunities
-            throw new NotImplementedException();
+            return context.Opportunities.Where(o => o.Name.Contains(filter)).ToList();
         }
 
         public IEnumerable<Opportunity> SearchOpportunities(string query)
         {
-            // Implement the method to search opportunities
-            throw new NotImplementedException();
+            return context.Opportunities.Where(o => o.Name.Contains(query) || o.Description.Contains(query)).ToList();
         }
     }
 }
