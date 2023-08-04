@@ -4,14 +4,16 @@ using Volunteer_Management_System.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddDbContext<AppDbContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IPersonRepository, FakePersonRepository>();
+builder.Services.AddTransient<IAdminRepository, EFAdminRepository>();
+builder.Services.AddTransient<IVolunteerRepository, EFVolunteerRepository>();
+builder.Services.AddTransient<IOpportunityRepository, EFOpportunityRepository>();
+
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
