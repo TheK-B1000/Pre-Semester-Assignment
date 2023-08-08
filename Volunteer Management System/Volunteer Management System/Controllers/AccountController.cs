@@ -9,11 +9,11 @@ using Volunteer_Management_System.Models;
 
 namespace Volunteer_Management_System.Controllers
 {
-    public class AdminController : Controller
+    public class AccountController : Controller
     {
         private readonly IAdminRepository _adminRepository;
 
-        public AdminController(IAdminRepository adminRepository)
+        public AccountController(IAdminRepository adminRepository)
         {
             _adminRepository = adminRepository;
         }
@@ -71,6 +71,10 @@ namespace Volunteer_Management_System.Controllers
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
+        }
+        public IActionResult ResetPassword()
+        {
+            return View();
         }
     }
 }
