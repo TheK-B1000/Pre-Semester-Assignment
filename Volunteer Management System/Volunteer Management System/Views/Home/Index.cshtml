@@ -1,8 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="lib/bootstrap/dist/css/*.min.css" />
+    <link rel="stylesheet" href="~/css/AdminTemplate.css">
     <title>Volunteer Management System - Home</title>
-    <link rel="stylesheet" href="path/to/your/styles.css">
+    <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -27,5 +35,13 @@
     <footer>
         <p>&copy; 2023 Volunteer Management System</p>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/AdminTemplate.js"></script>
+    <script src="~/js/CardWidget.js"></script>
+    <script src="~/js/ControlSidebar.js"></script>
+    <script src="~/js/SidebarSearch.js"></script>
+    <script src="~/js/Dropdown.js"></script>
+    <script src="~/js/Layout.js"></script>
+    <script src="~/js/PushMenu.js"></script>
 </body>
 </html>
