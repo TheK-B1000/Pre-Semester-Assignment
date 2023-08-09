@@ -20,5 +20,14 @@ namespace Volunteer_Management_System.Controllers
         {
             return View();
         }
+        public IActionResult ManageVolunteers()
+        {
+            return View();
+        }
+
+        public IActionResult ManageOpportunities()
+        {
+            return View();
+        }
     }
 }
