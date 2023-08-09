@@ -10,6 +10,7 @@ public class OpportunityController : Controller
         _opportunityRepository = opportunityRepository;
     }
 
+
     public IActionResult ManageOpportunities()
     {
         var opportunities = _opportunityRepository.Opportunities;
