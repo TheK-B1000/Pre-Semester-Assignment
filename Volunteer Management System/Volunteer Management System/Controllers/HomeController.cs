@@ -30,9 +30,5 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
-        public IActionResult OpportunityDetails()
-        {
-            return View();
-        }
     }
 }

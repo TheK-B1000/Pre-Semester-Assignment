@@ -1,71 +1,79 @@
 ﻿@{
-    ViewData["Title"] = "Volunteer Details";
+    Layout = null;
 }
 
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3 bg-light sidebar">
-            <div class="sidebar-sticky">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/AdminTemplate.css">
+    <title>Volunteer Management System - Volunteer Details</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="mb-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Volunteer Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Add navigation links here -->
+                    <!-- TODO Add conditional logic to check if admin is logged in -->
+                    <li class="nav-item">
+                        <a class="btn btn-secondary mr-2" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="#">Login</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-
-        <!-- Main Content -->
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <h1 class="h2">Volunteer Details</h1>
-
-            <!-- Volunteer Information Section -->
-            <div class="my-3 p-3 bg-white rounded shadow-sm">
-                <h6 class="mb-0">Volunteer Information</h6>
-
-                <!-- Volunteer details fields -->
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        <label>First Name</label>
-                        <p>@Model.FirstName</p> 
-                        <label>Last Name</label>
-                        <p>@Model.LastName</p> 
+        </nav>
+        <h1 class="text-center">Edit Volunteer</h1>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <div class="mb-4">
+                        <img class="rounded-circle" />
+                        <h2>Profile pic and Username go here</h2>
                     </div>
-                    <div class="col-md-6">
-                        <label>Username</label>
-                        <p>@Model.Username</p> 
-                        <label>Email</label>
-                        <p>@Model.Email</p> 
-                    </div>
-                </div>
 
-                <!-- Edit and Delete buttons -->
-                <div class="d-flex justify-content-end">
-                    <a href="#" class="btn btn-primary">Edit Volunteer</a>
-                    <a href="#" class="btn btn-danger ml-3">Delete Volunteer</a> <!-- TODO add delete functionality -->
+                    <form class="form-inline mt-2 mt-md-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+                    <ul class="nav flex-column mt-4">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="ManageVolunteers">Manage Volunteers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="ManageOpportunities">Manage Opportunities</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+            <!-- Edit Volunteer -->
+           
 
-            <!-- Opportunity Matches Section -->
-            <div class="my-3 p-3 bg-white rounded shadow-sm">
-                <h6 class="mb-0">Opportunity Matches</h6>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
+            <script src="~/js/AdminTemplate.js"></script>
+            <script src="~/js/CardWidget.js"></script>
+            <script src="~/js/ControlSidebar.js"></script>
+            <script src="~/js/SidebarSearch.js"></script>
+            <script src="~/js/Dropdown.js"></script>
+            <script src="~/js/Layout.js"></script>
+            <script src="~/js/PushMenu.js"></script>
+</body>
+</html>
 
-                <table class="table mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">
-                                <a href="#">Opportunity Name</a> <!-- TODO add sorting functionality -->
-                            </th>
-                            <th scope="col">
-                                <a href="#">Center</a> <!-- TODO add sorting functionality -->
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Opportunity matches list here -->
-                        <!-- Example: -->
-                        <tr>
-                            <td>Food Drive</td>
-                            <td>Main Center</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
-</div>
