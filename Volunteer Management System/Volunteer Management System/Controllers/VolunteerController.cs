@@ -27,6 +27,11 @@ namespace Volunteer_Management_System.Controllers
             return View("ManageVolunteers", volunteers);
         }
 
+        public IActionResult VolunteerDetails()
+        {
+            return View();
+        }
+
         public IActionResult EditVolunteer(string id)
         {
             var volunteer = _volunteerRepository.Volunteers.FirstOrDefault(v => v.PersonID == id);

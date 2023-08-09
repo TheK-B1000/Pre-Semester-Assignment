@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/AdminTemplate.css">
-    <title>Volunteer Management System - Manage Opportunities</title>
+    <title>Volunteer Management System - Opportunity Details</title>
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
@@ -32,7 +32,7 @@
                 </ul>
             </div>
         </nav>
-        <h1 class="text-center">Manage Opportunities</h1>
+        <h1 class="text-center">Edit Opportunity</h1>
     </header>
     <div class="container-fluid">
         <div class="row">
@@ -62,43 +62,8 @@
                     </ul>
                 </div>
             </div>
-            <!-- Edit Opportunity Modal -->
-            <div class="modal fade" id="editOpportunityModal" tabindex="-1" role="dialog" aria-labelledby="editOpportunityModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editOpportunityModalLabel">Edit Opportunity</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form asp-controller="Opportunity" asp-action="EditOpportunity" method="post">
-                            <div class="modal-body">
-                                <!-- Hidden input for OpportunityID -->
-                                <input type="hidden" id="OpportunityID" name="OpportunityID" />
-
-                                <!-- Opportunity Name Field -->
-                                <div class="form-group">
-                                    <label for="OpportunityName">Opportunity Name</label>
-                                    <input type="text" class="form-control" id="OpportunityName" name="Name" required />
-                                </div>
-
-                                <!-- Center Field -->
-                                <div class="form-group">
-                                    <label for="Center">Center</label>
-                                    <input type="text" class="form-control" id="Center" name="Center" required />
-                                </div>
-
-                                <!-- You can add other fields as required -->
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <!-- Edit Opportunity -->
+           
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
