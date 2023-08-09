@@ -23,15 +23,15 @@ public class OpportunityController : Controller
         return View("ManageOpportunities", opportunities);
     }
 
-    public IActionResult EditOpportunity(string id)
+    public IActionResult OpportunityDetails()
     {
-        var opportunity = _opportunityRepository.Opportunities.FirstOrDefault(o => o.OpportunityID == id);
-        if (opportunity == null)
-        {
-            return NotFound();
-        }
+        return View();
+    }
 
-        return View(opportunity);
+    public IActionResult Edit()
+    {
+       
+        return View();
     }
 
     [HttpPost]
