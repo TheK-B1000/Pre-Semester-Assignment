@@ -22,24 +22,6 @@ namespace Volunteer_Management_System.Controllers
             repository = repo;
         }
 
-        public ViewResult List(string role, int page = 1)
-            => View(new PeopleListViewModel
-            {
-                 People = repository.People
-                    .Where(p => role == null || p.Role == role)
-                    .OrderBy(p => p.PersonID)
-                    .Skip((page - 1) * PageSize)
-                    .Take(PageSize),
-                 PagingInfo = new PagingInfo
-                 {
-                     CurrentPage = page,
-                     ItemsPerPage = PageSize,
-                     TotalItems = role == null ?
-                        repository.People.Count() :
-                        repository.People.Where(e =>
-                            e.Role == role).Count()
-                 },
-                CurrentRole = role
-            });
+       
     }
 }
