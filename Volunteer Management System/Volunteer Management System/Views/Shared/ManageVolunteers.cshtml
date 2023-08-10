@@ -1,0 +1,134 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/AdminTemplate.css">
+    <title>Volunteer Management System - Manage Volunteers</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="mb-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Volunteer Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Add navigation links here -->
+                    <!-- TODO Add conditional logic to check if admin is logged in -->
+                    <li class="nav-item">
+                        <a class="btn btn-secondary mr-2" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <h1 class="text-center">Manage Volunteers</h1>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <div class="mb-4">
+                        <img class="rounded-circle" />
+                        <h2>Profile pic and Username go here</h2>
+                    </div>
+
+                    <form class="form-inline mt-2 mt-md-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+                    <ul class="nav flex-column mt-4">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="ManageVolunteers">Manage Volunteers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="ManageOpportunities">Manage Opportunities</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h1 class="h2">Manage Volunteers</h1>
+
+            <!-- Volunteers Section -->
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h6 class="mb-0">Current Volunteers</h6>
+                    <a href="#" class="btn btn-primary">Add New Volunteer</a>
+                </div>
+
+                <!-- Search bar and filter dropdown -->
+                <div class="d-flex justify-content-between align-items-center w-100 mt-3">
+                    <input type="text" class="form-control" placeholder="Search volunteers">
+                    <select class="form-control ml-3">
+                        <option selected>Filter...</option>
+                        <option>Approved</option>
+                        <option>Pending Approval</option>
+                        <option>Disapproved</option>
+                        <option>Inactive</option>
+                    </select>
+                </div>
+
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <a href="#">Name</a> <!-- TODO add sorting functionality -->
+                            </th>
+                            <th scope="col">
+                                <a href="#">Username</a> <!-- TODO add sorting functionality -->
+                            </th>
+                            <th scope="col">
+                                <a href="#">Email</a> <!-- TODO add sorting functionality -->
+                            </th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Volunteers list here -->
+                        <!-- Example: -->
+                        <tr>
+                            <td>John Doe</td>
+                            <td>john_doe</td>
+                            <td>johndoe@example.com</td>
+                            <td>
+                                    <a asp-controller="Volunteer" asp-action="VolunteerDetails" class="btn btn-primary">Edit</a>
+                                <a href="#" class="btn btn-success">View Matches</a>
+                                <a href="#" class="btn btn-danger">Delete</a> <!-- TODO add delete functionality -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
+<script src="~/js/AdminTemplate.js"></script>
+<script src="~/js/CardWidget.js"></script>
+<script src="~/js/ControlSidebar.js"></script>
+<script src="~/js/SidebarSearch.js"></script>
+<script src="~/js/Dropdown.js"></script>
+<script src="~/js/Layout.js"></script>
+<script src="~/js/PushMenu.js"></script>
+</body>
+</html>

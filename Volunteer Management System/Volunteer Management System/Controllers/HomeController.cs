@@ -11,9 +11,24 @@ namespace Volunteer_Management_System.Controllers
 
          }
 
-         public IActionResult Index()
-         {
+        public IActionResult Index()
+        {
             return View();
-         }
-     }
+        }
+
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+        public IActionResult ManageVolunteers()
+        {
+            return View();
+        }
+
+        public IActionResult ManageOpportunities()
+        {
+            return View();
+        }
+
+    }
 }

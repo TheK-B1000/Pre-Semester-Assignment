@@ -7,9 +7,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/AdminTemplate.css">
-    <title>Volunteer Management System - Home</title>
+    <title>Volunteer Management System - Manage Opportunities</title>
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
@@ -32,7 +32,7 @@
                 </ul>
             </div>
         </nav>
-        <h1 class="text-center">Volunteer Management System Dashboard</h1>
+        <h1 class="text-center">Manage Opportunities</h1>
     </header>
     <div class="container-fluid">
         <div class="row">
@@ -51,6 +51,9 @@
 
                     <ul class="nav flex-column mt-4">
                         <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="ManageVolunteers">Manage Volunteers</a>
                         </li>
                         <li class="nav-item">
@@ -59,21 +62,54 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Main Content -->
+            <!-- Main Content for Manage Opportunities -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <h1 class="h2">Dashboard</h1>
-
-                <!-- Volunteers Section -->
-                <div class="my-3 p-3 bg-white rounded shadow-sm">
-                    <h6 class="border-bottom border-gray pb-2 mb-0">Current Volunteers</h6>
-                   
-                </div>
+                <h1 class="h2">Manage Opportunities</h1>
 
                 <!-- Opportunities Section -->
                 <div class="my-3 p-3 bg-white rounded shadow-sm">
-                    <h6 class="border-bottom border-gray pb-2 mb-0">Current Opportunities</h6>
-         
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <h6 class="mb-0">Current Opportunities</h6>
+                        <a href="#" class="btn btn-primary">Add New Opportunity</a>
+                    </div>
+
+                    <!-- Search bar and filter dropdown -->
+                    <div class="d-flex justify-content-between align-items-center w-100 mt-3">
+                        <input type="text" class="form-control" placeholder="Search opportunities">
+                        <select class="form-control ml-3">
+                            <option selected>Filter...</option>
+                            <option>Most Recent (60 days)</option>
+                            <option>By Center</option>
+                        </select>
+                    </div>
+
+                    <!-- Table of Opportunities -->
+                    <table class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <a href="#">Opportunity Name</a> <!-- TODO add sorting functionality -->
+                                </th>
+                                <th scope="col">
+                                    <a href="#">Center</a> <!-- TODO add sorting functionality -->
+                                </th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Opportunities list here -->
+                            <!-- Example: -->
+                            <tr>
+                                <td>Food Drive</td>
+                                <td>Main Center</td>
+                                <td>
+                                    <a asp-controller="Opportunity" asp-action="OpportunityDetails" class="btn btn-primary">Edit</a>
+                                    <a href="#" class="btn btn-success">View Matches</a>
+                                    <a href="#" class="btn btn-danger">Delete</a> <!-- TODO add delete functionality -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </main>
         </div>
@@ -90,3 +126,4 @@
     <script src="~/js/PushMenu.js"></script>
 </body>
 </html>
+
