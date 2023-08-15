@@ -58,6 +58,10 @@
                 </div>
                 <form asp-controller="VolunteerController" asp-action="AddVolunteer" method="post">
                     <div class="form-group">
+                        <label for="PersonID">ID</label>
+                        <input type="text" class="form-control" id="PersonID" name="PersonID" required>
+                    </div>
+                    <div class="form-group">
                         <label for="FirstName">First Name</label>
                         <input type="text" class="form-control" id="FirstName" name="FirstName" required>
                     </div>
@@ -129,40 +133,20 @@
                     <div class="form-group">
                         <label for="ApprovalStatus">Approval Status</label>
                         <select class="form-control" id="ApprovalStatus" name="ApprovalStatus">
-                            <option value="Pending">Pending</option>
+                            <option value="Rejected">Approved/Pending Approval</option>                       
                             <option value="Approved">Approved</option>
-                            <option value="Rejected">Rejected</option>
+                            <option value="Pending">Pending Approval</option>
+                            <option value="Rejected">Disapproved</option>
+                            <option value="Rejected">Inactive</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Add Volunteer</button>
+                    <button type="submit" class="btn btn-secondary">Add Volunteer</button>
                     <a asp-controller="Home" asp-action="ManageVolunteers" class="btn btn-secondary" role="button">Cancel</a>
                 </form>
             </main>
         </div>
     </div>
-
-    <!-- Confirm Quit Session Modal -->
-    <div class="modal fade" id="quitSessionModal" tabindex="-1" aria-labelledby="quitSessionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="quitSessionModalLabel">Are you sure?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    All unsaved changes will be lost!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Stay</button>
-                    <button type="button" class="btn btn-danger">Quit Session</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>

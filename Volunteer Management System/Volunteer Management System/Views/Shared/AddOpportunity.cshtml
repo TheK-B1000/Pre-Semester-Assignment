@@ -51,6 +51,61 @@
                 </div>
             </div>
 
+            <!-- Add Opportunity Form -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div id="errorAlert" class="alert alert-danger" role="alert" style="display: none;">
+                    <span id="errorMessage">Error: Invalid input detected!</span>
+                </div>
+                <form asp-controller="OpportunityController" asp-action="AddOpportunity" method="post">
+                    <div class="form-group">
+                        <label for="OpporunityID">ID</label>
+                        <input type="text" class="form-control" id="OpporunityID" name="OpporunityID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" name="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <input type="text" class="form-control" id="Description" name="Description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Center">Center</label>
+                        <input type="text" class="form-control" id="Center" name="Center" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Date">Date</label>
+                        <input type="text" class="form-control" id="Date" name="Date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Duration">Duration</label>
+                        <textarea class="form-control" id="Duration" name="Duration" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="MaximumVolunteers">Maximum Volunteers</label>
+                        <textarea class="form-control" id="MaximumVolunteers" name="MaximumVolunteers" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="CurrentVolunteers">Current Volunteers</label>
+                        <textarea class="form-control" id="CurrentVolunteers" name="CurrentVolunteers" required></textarea>
+                    </div>             
+
+                    <div class="form-group">
+                        <label for="ApprovalStatus">Approval Status</label>
+                        <select class="form-control" id="ApprovalStatus" name="ApprovalStatus">
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary">Add Opportunity</button>
+                    <a asp-controller="Home" asp-action="ManageOpportunities" class="btn btn-secondary" role="button">Cancel</a>
+                </form>
+            </main>
+        </div>
+    </div>
+
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
