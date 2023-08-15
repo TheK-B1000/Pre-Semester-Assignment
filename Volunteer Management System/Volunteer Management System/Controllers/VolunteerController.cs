@@ -75,9 +75,13 @@ namespace Volunteer_Management_System.Controllers
                 return RedirectToAction("ManageVolunteers");
             }
 
-            // If model state is not valid, return to the same view to show validation errors
-            return View("AddVolunteers");
+
+            // Redirect to the VolunteerAdded action within the Volunteer controller
+            return RedirectToAction("VolunteerAdded", "Volunteer");
         }
+
+
+
 
         public IActionResult DeleteVolunteer(string id)
         {
