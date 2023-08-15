@@ -50,6 +50,11 @@ public class OpportunityController : Controller
         return View();
     }
 
+    public IActionResult OpportunityAdded()
+    {
+        return View();
+    }
+
     [HttpPost]
     public IActionResult AddOpportunity(Opportunity opportunity)
     {
