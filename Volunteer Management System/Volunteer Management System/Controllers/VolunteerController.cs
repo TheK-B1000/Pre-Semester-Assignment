@@ -61,7 +61,7 @@ namespace Volunteer_Management_System.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddVolunteerData(Volunteer volunteer)
+        public async Task<IActionResult> AddVolunteer(Volunteer volunteer)
         {
             if (ModelState.IsValid)
             {
@@ -71,9 +71,8 @@ namespace Volunteer_Management_System.Controllers
             }
 
             // If model state is not valid, return to the same view to show validation errors
-            return View("AddVolunteer");
+            return View("AddVolunteers");
         }
-
 
         public IActionResult DeleteVolunteer(string id)
         {
