@@ -101,8 +101,6 @@ namespace Volunteer_Management_System.Migrations
 
                     b.ToTable("People");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
-
                     b.UseTphMappingStrategy();
                 });
 
