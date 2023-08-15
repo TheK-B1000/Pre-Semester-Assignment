@@ -77,9 +77,16 @@ namespace Volunteer_Management_System.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
+
         public IActionResult ResetPassword()
         {
             return View();
         }
+
+        public IActionResult EmailSent()
+        {
+            return View();
+        }
+
     }
 }

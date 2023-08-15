@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/AdminTemplate.css">
-    <title>Volunteer Management System - Reset Password</title>
+    <title>Volunteer Management System - Email Sent</title>
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column h-100">
@@ -20,22 +20,11 @@
 
     <main class="container mb-5">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">Reset Password</div>
-                    <div class="card-body">
-                        <form method="post" action="EmailSent">
-                            <div class="form-group">
-                                <label for="email">Enter your email address:</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="mt-4 text-center">
-                    <p>If you entered a valid email address, a password reset link will be sent to it.</p>
-                </div>
+            <div class="col-md-8 text-center">
+                <h2>Email Sent</h2>
+                <p class="lead">
+                    An email to reset your password has been sent. Please check your inbox and follow the instructions to continue.
+                </p>
             </div>
         </div>
     </main>
