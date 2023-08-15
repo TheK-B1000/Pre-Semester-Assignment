@@ -53,7 +53,8 @@ namespace Volunteer_Management_System.Migrations
                     EmergencyContactPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmergencyContactEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DriversLicenseOnFile = table.Column<bool>(type: "bit", nullable: true),
-                    SocialSecurityCardOnFile = table.Column<bool>(type: "bit", nullable: true)
+                    SocialSecurityCardOnFile = table.Column<bool>(type: "bit", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
