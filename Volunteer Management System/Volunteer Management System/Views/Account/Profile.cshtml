@@ -1,0 +1,32 @@
+﻿@model Person
+@section Css{
+    <link rel="stylesheet" href="~/css/AdminTemplate.css">
+    <link rel="stylesheet" href="~/css/Volunteer.css">
+}
+@section Scripts{
+    <script src="~/js/AdminTemplate.js"></script>
+    <script src="~/js/CardWidget.js"></script>
+}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Volunteer Profile</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <strong>Name: @Model.FirstName @Model.LastName</strong>
+            </h4>
+            <p class="card-text">
+                <strong>Person ID: </strong>@Model.PersonID<br>
+                <strong>Username: </strong>@Model.Username<br>
+                <strong>Password: </strong>@Model.Password<br>
+                <strong>Email: </strong>@Model.Email<br>
+                <strong>Address: </strong>@Model.Address<br>
+                <strong>Phone Number: </strong>@Model.PhoneNumbers<br>
+                <span class="badge bg-success text-white mt-3 p-2">
+                    <strong>Role: </strong>@Model.Role
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

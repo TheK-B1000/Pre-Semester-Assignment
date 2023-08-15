@@ -62,6 +62,11 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
         public IActionResult ManageVolunteers()
         {
             return RedirectToAction("ManageVolunteers", "Volunteer");
