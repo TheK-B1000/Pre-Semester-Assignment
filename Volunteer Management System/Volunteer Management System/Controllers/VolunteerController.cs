@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Volunteer_Management_System.Models;
 
 namespace Volunteer_Management_System.Controllers
@@ -60,14 +61,17 @@ namespace Volunteer_Management_System.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddVolunteer(Volunteer volunteer)
+        public async Task<IActionResult> AddVolunteer(Volunteer volunteer)
         {
             if (ModelState.IsValid)
             {
                 _volunteerRepository.AddVolunteer(volunteer);
+                TempData["Message"] = "New volunteer added successfully!";
+                return RedirectToAction("ManageVolunteers");
             }
 
-            return RedirectToAction("ManageVolunteers");
+            // If model state is not valid, return to the same view to show validation errors
+            return View("AddVolunteers");
         }
 
         public IActionResult DeleteVolunteer(string id)
