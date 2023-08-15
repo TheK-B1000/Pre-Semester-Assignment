@@ -133,7 +133,7 @@
                     <div class="form-group">
                         <label for="ApprovalStatus">Approval Status</label>
                         <select class="form-control" id="ApprovalStatus" name="ApprovalStatus">
-                            <option value="Rejected">Approved/Pending Approval</option>                       
+                            <option value="Pending">Approved/Pending Approval</option>                       
                             <option value="Approved">Approved</option>
                             <option value="Pending">Pending Approval</option>
                             <option value="Rejected">Disapproved</option>
@@ -141,7 +141,8 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-secondary">Add Volunteer</button>
+                    
+                    <a asp-controller="Volunteer" asp-action="VolunteerAdded" method="post" class="btn btn-secondary" role="button">Add Volunteer</a>
                     <a asp-controller="Home" asp-action="ManageVolunteers" class="btn btn-secondary" role="button">Cancel</a>
                 </form>
             </main>
