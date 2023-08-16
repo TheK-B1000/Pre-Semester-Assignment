@@ -8,7 +8,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddTransient<IDatabaseRepository, DatabaseRepository>();
 builder.Services.AddTransient<IPersonRepository, EFPersonRepository>();
 builder.Services.AddTransient<IAdminRepository, EFAdminRepository>();
 builder.Services.AddTransient<IVolunteerRepository, EFVolunteerRepository>();
