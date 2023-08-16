@@ -5,10 +5,12 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin: 0; 
 }
 
 main {
     flex: 1 0 auto;
+    padding-left: 240px;
 }
 
 *
@@ -425,6 +427,28 @@ a.link-hover:hover
 .form-label
 {
     display: inline-block;
+}
+
+.black-bg {
+    background-color: #000; 
+    height: 150vh; 
+    padding-top: 20px; 
+}
+
+.white-text {
+    color: #fff !important;
+}
+
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0; 
+    height: 100vh; 
+    overflow-y: auto; 
+}
+
+.container-fluid .col-md-3 {
+    padding: 0;
 }
 
 
