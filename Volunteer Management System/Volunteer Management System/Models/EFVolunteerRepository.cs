@@ -25,7 +25,7 @@ namespace Volunteer_Management_System.Models
 
         public void UpdateVolunteer(Volunteer volunteer)
         {
-            var volunteerToUpdate = _context.Volunteers.FirstOrDefault(v => v.PersonID == volunteer.PersonID);
+            var volunteerToUpdate = _context.Volunteers.FirstOrDefault(v => v.VolunteerID == volunteer.VolunteerID);
             if (volunteerToUpdate != null)
             {
                 volunteerToUpdate.FirstName = volunteer.FirstName;
@@ -52,9 +52,9 @@ namespace Volunteer_Management_System.Models
         }
 
 
-        public void DeleteVolunteer(string PersonID)
+        public void DeleteVolunteer(string VolunteerID)
         {
-            var volunteerToDelete = _context.Volunteers.FirstOrDefault(v => v.PersonID == PersonID);
+            var volunteerToDelete = _context.Volunteers.FirstOrDefault(v => v.VolunteerID == VolunteerID);
             if (volunteerToDelete != null)
             {
                 _context.Volunteers.Remove(volunteerToDelete);

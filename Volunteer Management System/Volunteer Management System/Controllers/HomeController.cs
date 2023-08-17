@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Volunteer_Management_System.Models;
 
 namespace Volunteer_Management_System.Controllers
 {
-     public class HomeController : Controller
-     {
-        
-         //constructor
-         public HomeController()
-         {
+    public class HomeController : Controller
+    {
+        private readonly IDatabaseRepository _databaseRepository;
 
-         }
+        // Inject IDatabaseRepository using constructor
+        public HomeController(IDatabaseRepository databaseRepository)
+        {
+            _databaseRepository = databaseRepository;
+        }
 
         public IActionResult Index()
         {
@@ -22,13 +24,14 @@ namespace Volunteer_Management_System.Controllers
         }
         public IActionResult ManageVolunteers()
         {
-            return View();
+            var volunteers = _databaseRepository.GetAllVolunteers();
+            return View(volunteers);
         }
 
         public IActionResult ManageOpportunities()
         {
-            return View();
+            var opportunities = _databaseRepository.GetAllOpportunities();
+            return View(opportunities);
         }
-
-    }
+    } 
 }

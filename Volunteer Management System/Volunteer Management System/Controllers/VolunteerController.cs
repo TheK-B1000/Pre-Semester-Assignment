@@ -9,23 +9,16 @@ namespace Volunteer_Management_System.Controllers
 {
     public class VolunteerController : Controller
     {
-        private readonly IVolunteerRepository _volunteerRepository;
 
-        public VolunteerController(IVolunteerRepository volunteerRepository)
-        {
-            _volunteerRepository = volunteerRepository;
-        }
 
-        public IActionResult ManageVolunteers()
+        public VolunteerController()
         {
-            var volunteers = _volunteerRepository.Volunteers;
-            return View(volunteers);
+ 
         }
 
         public IActionResult ChangeVolunteerFilter(string filter)
         {
-            var volunteers = _volunteerRepository.FilterVolunteers(filter);
-            return View("ManageVolunteers", volunteers);
+            return View("ManageVolunteers");
         }
 
         public IActionResult VolunteerDetails()
@@ -38,26 +31,9 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
-        public IActionResult EditVolunteer(string id)
+        public IActionResult EditVolunteer()
         {
-            var volunteer = _volunteerRepository.Volunteers.FirstOrDefault(v => v.PersonID == id);
-            if (volunteer == null)
-            {
-                return NotFound();
-            }
-
-            return View(volunteer);
-        }
-
-        [HttpPost]
-        public IActionResult EditVolunteer(Volunteer volunteer)
-        {
-            if (ModelState.IsValid)
-            {
-                _volunteerRepository.UpdateVolunteer(volunteer);
-            }
-
-            return RedirectToAction("ManageVolunteers");
+            return View();
         }
 
         public IActionResult AddVolunteer()
@@ -65,34 +41,14 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddVolunteer(Volunteer volunteer)
+
+        public IActionResult DeleteVolunteer()
         {
-            if (ModelState.IsValid)
-            {
-                _volunteerRepository.AddVolunteer(volunteer);
-                TempData["Message"] = "New volunteer added successfully!";
-                return RedirectToAction("ManageVolunteers");
-            }
-
-
-            // Redirect to the VolunteerAdded action within the Volunteer controller
-            return RedirectToAction("VolunteerAdded", "Volunteer");
+            return View();
         }
-
-
-
-
-        public IActionResult DeleteVolunteer(string id)
+        public IActionResult SearchVolunteers()
         {
-            _volunteerRepository.DeleteVolunteer(id);
-            return RedirectToAction("ManageVolunteers");
-        }
-
-        public IActionResult SearchVolunteers(string query)
-        {
-            var volunteers = _volunteerRepository.SearchVolunteers(query);
-            return View("ManageVolunteers", volunteers);
+            return View();
         }
     }
 }

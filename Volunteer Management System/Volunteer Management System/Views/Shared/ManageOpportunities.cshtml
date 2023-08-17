@@ -2,6 +2,8 @@
     Layout = null;
 }
 
+@model List<Volunteer_Management_System.Models.Opportunity>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,41 +17,58 @@
 <body>
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Volunteer Management System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <a class="navbar-brand" href="#" style="padding-left: 50px;">Volunteer Management System</a>
+                    </div>
+                    <div class="col-md-9">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <h1 class="text-center">Manage Opportunities</h1>
     </header>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-md-3 bg-light sidebar">
+            <div class="col-md-3 black-bg sidebar">
                 <div class="sidebar-sticky">
-                    <div class="mb-4">
-                        <img class="rounded-circle" />
-                        <h2>Profile pic and Username go here</h2>
+                    <!-- Profile Section -->
+                    <div class="text-center mb-4">
+                        <div style="background-color: #ddd; border-radius: 50%; width: 100px; height: 100px; margin: 0 auto;"></div>
+                        <h4 class="mt-3 white-text">Username</h4>
                     </div>
 
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <!-- Search Bar -->
+                    <form class="form-inline mt-2 mb-4 d-flex justify-content-center" onsubmit="return handleSearch()">
+                        <input class="form-control w-75" type="text" id="searchInput" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-dark ml-2" type="submit">Search</button>
                     </form>
 
-                    <ul class="nav flex-column mt-4">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                    <!-- Navigation Links -->
+                    <ul class="nav flex-column mt-4 pl-3">
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center white-text" asp-controller="Home" asp-action="Dashboard">
+                                <i class="fas fa-users mr-2"></i> Dashboard
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="ManageVolunteers">Manage Volunteers</a>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center white-text" asp-controller="Home" asp-action="ManageVolunteers">
+                                <i class="fas fa-users mr-2"></i> Manage Volunteers
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="ManageOpportunities">Manage Opportunities</a>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center white-text" asp-controller="Home" asp-action="ManageOpportunities">
+                                <i class="fas fa-briefcase mr-2"></i> Manage Opportunities
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
+
             <!-- Main Content for Manage Opportunities -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <h1 class="h2">Manage Opportunities</h1>
@@ -76,27 +95,27 @@
                         <thead>
                             <tr>
                                 <th scope="col">
-                                    <a href="#">Name</a> <!-- TODO add sorting functionality -->
+                                    <a href="#">Name</a> 
                                 </th>
                                 <th scope="col">
-                                    <a href="#">Center</a> <!-- TODO add sorting functionality -->
+                                    <a href="#">Center</a> 
                                 </th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Opportunities list here -->
-                            <!-- Example: -->
-                            <tr>
-                                <td>Food Drive</td>
-                                <td>Main Center</td>
-                                <td>
-                                    <a asp-controller="Opportunity" asp-action="OpportunityDetails" class="btn btn-primary">Edit</a>
-                                    <a href="#" class="btn btn-success">View Matches</a>
-                                    <a asp-controller="Opportunity" asp-action="DeleteOpportunity" asp-route-id="OpportunityID" class="btn btn-danger">Delete</a>
-
-                                </td>
-                            </tr>
+                            @foreach (var opportunity in Model)
+                            {
+                                <tr>
+                                    <td>@opportunity.Name</td>
+                                    <td>@opportunity.Center</td>
+                                    <td>
+                                        <a asp-controller="Opportunity" asp-action="OpportunityDetails" asp-route-id="@opportunity.OpportunityID" class="btn btn-primary">Edit</a>
+                                        <a href="#" class="btn btn-success">View Matches</a>
+                                        <a asp-controller="Opportunity" asp-action="DeleteOpportunity" asp-route-id="@opportunity.OpportunityID" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -104,6 +123,21 @@
         </div>
     </div>
 
+    <script>
+        function handleSearch() {
+            const inputValue = document.getElementById("searchInput").value.toLowerCase();
+
+            if (inputValue.includes("add volunteer")) {
+                window.location.href = '@Url.Action("AddVolunteer", "Volunteer")';
+                return false;
+            } else if (inputValue.includes("add opportunity")) {
+                window.location.href = '@Url.Action("AddOpportunity", "Opportunity")';
+                return false;
+            }
+
+            return false;
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
     <script src="~/js/AdminTemplate.js"></script>
