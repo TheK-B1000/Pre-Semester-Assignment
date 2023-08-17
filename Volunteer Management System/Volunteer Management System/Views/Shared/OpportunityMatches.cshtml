@@ -68,6 +68,40 @@
                 </div>
             </div>
 
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h1 class="h2">Volunteer Matches for Opportunity</h1>
+
+                <!-- Matched Volunteers Section -->
+                <div class="my-3 p-3 bg-white rounded shadow-sm">
+                    <h6 class="mb-0">Matched Volunteers</h6>
+
+                    <table class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Preferred Centers</th>
+                                <th scope="col">Skills/Interests</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var volunteer in Model)
+                            {
+                                <tr>
+                                    <td>@volunteer.FirstName @volunteer.LastName</td>
+                                    <td>@volunteer.Username</td>
+                                    <td>@volunteer.Email</td>
+                                    <td>@volunteer.Centers</td>
+                                    <td>@volunteer.SkillsOrInterests</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
 
         </div>
     </div>
