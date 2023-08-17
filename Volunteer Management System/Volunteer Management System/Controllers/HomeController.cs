@@ -21,13 +21,6 @@ namespace Volunteer_Management_System.Controllers
         {
             return View();
         }
-
-        public IActionResult ManageAdmin()
-        { 
-            var admin = _databaseRepository.GetAllAdmins();
-            return View(admin);
-        }
-
         public IActionResult ManageVolunteers()
         {
             var volunteers = _databaseRepository.GetAllVolunteers();

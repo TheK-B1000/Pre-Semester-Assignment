@@ -15,8 +15,6 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
-        public IActionResult Profile() { return View(); }
-
         private IPersonRepository repository;
         public int PageSize = 4;
         public PersonController(IPersonRepository repo)

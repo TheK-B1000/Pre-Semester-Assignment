@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using Volunteer_Management_System.Models;
 
 namespace Volunteer_Management_System.Models
 {
 
     public class EFAdminRepository : IAdminRepository
     {
-        private AppDbContext _context;
+        private AppDbContext context;
         public EFAdminRepository(AppDbContext ctx)
         {
-            _context = ctx;
+            context = ctx;
         }
-        public IEnumerable<Admin> Admins => _context.Admins;
+        public IEnumerable<Admin> Admins => context.Admins;
     }
 
 }
