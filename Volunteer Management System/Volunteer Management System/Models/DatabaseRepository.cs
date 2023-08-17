@@ -102,6 +102,17 @@ namespace Volunteer_Management_System.Models
                 Duration = TimeSpan.FromHours(4),
                 MaximumVolunteers = 30,
                 CurrentVolunteers = 10
+            },
+            new Opportunity
+            {
+                OpportunityID = "O003",
+                Name = "Food Bank",
+                Description = "Help give food to those in need.",
+                Center = "UNF Food Center",
+                Date = DateTime.Now.AddMonths(1),
+                Duration = TimeSpan.FromHours(3),
+                MaximumVolunteers = 40,
+                CurrentVolunteers = 10
             }
         };
 
@@ -114,5 +125,30 @@ namespace Volunteer_Management_System.Models
         {
             return opportunities;
         }
+
+        public IEnumerable<Opportunity> GetMatchedOpportunitiesForVolunteer(string volunteerId)
+        {
+            var volunteer = volunteers.FirstOrDefault(v => v.VolunteerID == volunteerId);
+            if (volunteer == null)
+            {
+                return new List<Opportunity>();
+            }
+
+            var preferredCenter = volunteer.Centers;
+            return opportunities.Where(o => o.Center == preferredCenter);
+        }
+
+        public IEnumerable<Volunteer> GetMatchedVolunteersForOpportunity(string opportunityId)
+        {
+            var opportunity = opportunities.FirstOrDefault(o => o.OpportunityID == opportunityId);
+            if (opportunity == null)
+            {
+                return new List<Volunteer>();
+            }
+
+            var preferredCenter = opportunity.Center;
+            return volunteers.Where(v => v.Centers == preferredCenter);
+        }
+
     }
 }
