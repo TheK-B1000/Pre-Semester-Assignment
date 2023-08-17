@@ -26,9 +26,10 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
-        public IActionResult VolunteerAdded()
+        public IActionResult VolunteerAdded(Volunteer volunteer)
         {
-            return View();
+            _databaseRepository.AddVolunteer(volunteer);
+            return RedirectToAction("ManageVolunteers", "Home");
         }
 
 
@@ -59,12 +60,8 @@ namespace Volunteer_Management_System.Controllers
         [HttpPost]
         public IActionResult AddVolunteer(Volunteer volunteer)
         {
-            if (ModelState.IsValid)
-            {
                 _databaseRepository.AddVolunteer(volunteer); 
                 return RedirectToAction("ManageVolunteers", "Home");
-            }
-            return View(volunteer);
         }
 
         public IActionResult DeleteVolunteer()
