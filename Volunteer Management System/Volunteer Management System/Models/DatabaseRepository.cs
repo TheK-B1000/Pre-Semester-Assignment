@@ -172,7 +172,10 @@ namespace Volunteer_Management_System.Models
         {
             return "A001";
         }
-
+        public void AddVolunteer(Volunteer volunteer)
+        {
+            volunteers.Add(volunteer);
+        }
 
         public IEnumerable<Volunteer> GetAllVolunteers()
         {
