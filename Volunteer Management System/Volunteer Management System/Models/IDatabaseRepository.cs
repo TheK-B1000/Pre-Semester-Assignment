@@ -2,6 +2,7 @@
 {
     public interface IDatabaseRepository
     {
+        IEnumerable<Admin> GetAllAdmins();
         IEnumerable<Volunteer> GetAllVolunteers();
         IEnumerable<Opportunity> GetAllOpportunities();
         IEnumerable<Opportunity> GetMatchedOpportunitiesForVolunteer(string volunteerId);
