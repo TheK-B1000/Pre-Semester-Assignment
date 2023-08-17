@@ -1,7 +1,10 @@
 ﻿﻿@{
     Layout = null;
 }
-@model List<Volunteer_Management_System.Models.Admin>
+
+@model Volunteer_Management_System.Models.Admin
+
+
 <!DOCTYPE html>
 
 <html>
@@ -28,17 +31,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var admin in Model)
-            {
-                <tr>
-                    <td>@admin.AdminID</td>
-                    <td>@admin.Username</td>
-                    <td>@admin.Password</td>
-                    <td>@admin.Title</td>
-                    <td>@admin.Email</td>
-                </tr>
-            }
+            <tr>
+                <td>@Model.AdminID</td>
+                <td>@Model.Username</td>
+                <td>@Model.Password</td>
+                <td>@Model.Title</td>
+                <td>@Model.Email</td>
+            </tr>
         </tbody>
     </table>
 </body>
+
 </html>

@@ -162,6 +162,18 @@ namespace Volunteer_Management_System.Models
             return admins;
         }
 
+        Admin IDatabaseRepository.GetLoggedInAdmin()
+        {
+            var currentAdminId = GetCurrentAdminId();
+            return admins.FirstOrDefault(a => a.AdminID == currentAdminId);
+        }
+
+        private string GetCurrentAdminId()
+        {
+            return "A001";
+        }
+
+
         public IEnumerable<Volunteer> GetAllVolunteers()
         {
             return volunteers;
