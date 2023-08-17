@@ -3,14 +3,14 @@ using Volunteer_Management_System.Models;
 
 namespace Volunteer_Management_System.Controllers
 {
-     public class HomeController : Controller
-     {
-        private DatabaseRepository _db;
+    public class HomeController : Controller
+    {
+        private readonly IDatabaseRepository _databaseRepository;
 
-        //constructor
-        public HomeController()
+        // Inject IDatabaseRepository using constructor
+        public HomeController(IDatabaseRepository databaseRepository)
         {
-            _db = new DatabaseRepository();
+            _databaseRepository = databaseRepository;
         }
 
         public IActionResult Index()
@@ -22,16 +22,16 @@ namespace Volunteer_Management_System.Controllers
         {
             return View();
         }
-        public IActionResult ManageVolunteers(string id)
+        public IActionResult ManageVolunteers()
         {
-            var volunteers = _db.GetVolunteers(id); 
+            var volunteers = _databaseRepository.GetAllVolunteers();
             return View(volunteers);
         }
 
         public IActionResult ManageOpportunities()
         {
-            return View();
+            var opportunities = _databaseRepository.GetAllOpportunities();
+            return View(opportunities);
         }
-
-    }
+    } 
 }
