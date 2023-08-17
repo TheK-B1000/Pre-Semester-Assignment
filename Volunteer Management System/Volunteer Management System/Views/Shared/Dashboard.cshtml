@@ -15,38 +15,53 @@
 <body>
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Volunteer Management System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <a class="navbar-brand" href="#" style="padding-left: 50px;">Volunteer Management System</a>
+                    </div>
+                    <div class="col-md-9">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <h1 class="text-center">Volunteer Management System Dashboard</h1>
     </header>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-md-3 bg-light sidebar">
+            <div class="col-md-3 black-bg sidebar">
                 <div class="sidebar-sticky">
-                    <div class="mb-4">
-                        <img class="rounded-circle" />
-                        <a class="nav-link" asp-controller="Account" asp-action="Profile">Profile Page</a><!--Corey stuff-->
+
                     </div>
 
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <!-- Search Bar -->
+                    <form class="form-inline mt-2 mb-4 d-flex justify-content-center" onsubmit="return handleSearch()">
+                        <input class="form-control w-75" type="text" id="searchInput" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-dark ml-2" type="submit">Search</button>
                     </form>
 
-                    <ul class="nav flex-column mt-4">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="ManageVolunteers">Manage Volunteers</a>
+
+                    <!-- Navigation Links -->
+                    <ul class="nav flex-column mt-4 pl-3">
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center white-text" asp-controller="Home" asp-action="ManageVolunteers">
+                                <!-- Made the text white -->
+                                <i class="fas fa-users mr-2"></i> Manage Volunteers
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="ManageOpportunities">Manage Opportunities</a>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center white-text" asp-controller="Home" asp-action="ManageOpportunities">
+                                <!-- Made the text white -->
+                                <i class="fas fa-briefcase mr-2"></i> Manage Opportunities
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
+
 
             <!-- Main Content -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -55,18 +70,102 @@
                 <!-- Volunteers Section -->
                 <div class="my-3 p-3 bg-white rounded shadow-sm">
                     <h6 class="border-bottom border-gray pb-2 mb-0">Current Volunteers</h6>
-                   
+
+                    <div class="row mt-3">
+                        <!-- Volunteer 1 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="~/images/Vol002.png" class="card-img-top" alt="Volunteer 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Paula Jones</h5>
+                                    <p class="card-text">Her enthusiasm and deep knowledge about marine life inspire many, turning first-time volunteers into regulars.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Volunteer 2 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="~/images/Vol001.png" class="card-img-top" alt="Volunteer 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nathan Drake</h5>
+                                    <p class="card-text">His jovial laughter is infectious, making even the busiest days seem brighter for everyone around him.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Volunteer 3 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="~/images/Vol003.png" class="card-img-top" alt="Volunteer 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Lyn Taylor</h5>
+                                    <p class="card-text">An advocate for urban green spaces, she's dedicated to ensuring parks are clean and safe for families to enjoy.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Opportunities Section -->
                 <div class="my-3 p-3 bg-white rounded shadow-sm">
                     <h6 class="border-bottom border-gray pb-2 mb-0">Current Opportunities</h6>
-         
+
+                    <div class="row mt-3">
+                        <!-- Opportunity 1 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="~/images/Opp003.png" class="card-img-top" alt="Opportunity 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Park Cleanup</h5>
+                                    <p class="card-text">Connect with nature, foster community spirit, and contribute to a greener tomorrow.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Opportunity 2 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="~/images/Opp002.png" class="card-img-top" alt="Opportunity 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Food Bank</h5>
+                                    <p class="card-text">Dive into a hands-on experience that not only feeds the hungry but also nourishes your spirit of community service.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Opportunity 3 -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="~/images/Opp001.png" class="card-img-top" alt="Opportunity 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Beach Cleanup</h5>
+                                    <p class="card-text">Grab a glove, make new friends, and leave a tangible impact on our natural marine treasure.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </main>
         </div>
     </div>
 
+    <script>
+        function handleSearch() {
+            const inputValue = document.getElementById("searchInput").value.toLowerCase();
+
+            if (inputValue.includes("add volunteer")) {
+                window.location.href = '@Url.Action("AddVolunteer", "Volunteer")';
+                return false;
+            } else if (inputValue.includes("add opportunity")) {
+                window.location.href = '@Url.Action("AddOpportunity", "Opportunity")';
+                return false;
+            }
+
+            return false;
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
     <script src="~/js/AdminTemplate.js"></script>

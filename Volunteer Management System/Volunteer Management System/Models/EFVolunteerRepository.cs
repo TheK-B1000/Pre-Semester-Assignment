@@ -8,24 +8,24 @@ namespace Volunteer_Management_System.Models
 {
     public class EFVolunteerRepository : IVolunteerRepository
     {
-        private AppDbContext context;
+        private readonly AppDbContext _context;
 
-        public EFVolunteerRepository(AppDbContext ctx)
+        public EFVolunteerRepository(AppDbContext context)
         {
-            context = ctx;
+            _context = context;
         }
 
-        public IEnumerable<Volunteer> Volunteers => context.Volunteers;
+        public IEnumerable<Volunteer> Volunteers => _context.Volunteers;
 
         public void AddVolunteer(Volunteer volunteer)
         {
-            context.Volunteers.Add(volunteer);
-            context.SaveChanges();
+            _context.Volunteers.Add(volunteer);
+            _context.SaveChanges();
         }
 
         public void UpdateVolunteer(Volunteer volunteer)
         {
-            var volunteerToUpdate = context.Volunteers.FirstOrDefault(v => v.PersonID == volunteer.PersonID);
+            var volunteerToUpdate = _context.Volunteers.FirstOrDefault(v => v.VolunteerID == volunteer.VolunteerID);
             if (volunteerToUpdate != null)
             {
                 volunteerToUpdate.FirstName = volunteer.FirstName;
@@ -47,29 +47,29 @@ namespace Volunteer_Management_System.Models
                 volunteerToUpdate.DriversLicenseOnFile = volunteer.DriversLicenseOnFile;
                 volunteerToUpdate.SocialSecurityCardOnFile = volunteer.SocialSecurityCardOnFile;
 
-                context.SaveChanges();
+                _context.SaveChanges();
             }
         }
 
 
-        public void DeleteVolunteer(string PersonID)
+        public void DeleteVolunteer(string VolunteerID)
         {
-            var volunteerToDelete = context.Volunteers.FirstOrDefault(v => v.PersonID == PersonID);
+            var volunteerToDelete = _context.Volunteers.FirstOrDefault(v => v.VolunteerID == VolunteerID);
             if (volunteerToDelete != null)
             {
-                context.Volunteers.Remove(volunteerToDelete);
-                context.SaveChanges();
+                _context.Volunteers.Remove(volunteerToDelete);
+                _context.SaveChanges();
             }
         }
 
         public IEnumerable<Volunteer> FilterVolunteers(string filter)
         {
-            return context.Volunteers.Where(v => v.FirstName.Contains(filter) || v.LastName.Contains(filter)).ToList();
+            return _context.Volunteers.Where(v => v.FirstName.Contains(filter) || v.LastName.Contains(filter)).ToList();
         }
 
         public IEnumerable<Volunteer> SearchVolunteers(string query)
         {
-            return context.Volunteers.Where(v => v.FirstName.Contains(query) || v.LastName.Contains(query)).ToList();
+            return _context.Volunteers.Where(v => v.FirstName.Contains(query) || v.LastName.Contains(query)).ToList();
         }
     }
 }

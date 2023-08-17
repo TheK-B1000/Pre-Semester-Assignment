@@ -8,7 +8,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddTransient<IDatabaseRepository, DatabaseRepository>();
 builder.Services.AddTransient<IPersonRepository, EFPersonRepository>();
 builder.Services.AddTransient<IAdminRepository, EFAdminRepository>();
 builder.Services.AddTransient<IVolunteerRepository, EFVolunteerRepository>();
@@ -34,31 +34,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapGet("/hi", () => "Hello There!");
-
-app.MapControllerRoute(
- name: null,
- pattern: "{category}/Page{page:int}",
- defaults: new { Controller = "Person", action = "List" });
-
-app.MapControllerRoute(
- name: null,
- pattern: "Page{page:int}",
- defaults: new { Controller = "Person", action = "List", page = 1 });
-
-app.MapControllerRoute(
- name: null,
- pattern: "{category}",
- defaults: new { Controller = "Person", action = "List", page = 1 });
-
-app.MapControllerRoute(
-    name: null,
-    pattern: "",
-    defaults: new { Controller = "Home", action = "Index" });
-
-app.MapControllerRoute(
- name: "pagination",
- pattern: "People/Page{page}",
- defaults: new { Controller = "Person", action = "List" });
 
 app.MapControllerRoute(
  name: "default",
