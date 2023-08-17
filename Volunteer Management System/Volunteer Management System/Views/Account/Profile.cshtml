@@ -6,14 +6,12 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Profile</title>
-    <style type="text/css">
-        body {
-            font-family: Arial;
-            font-size: 10pt;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/AdminTemplate.css">
+    <title>Volunteer Management System - Manage Opportunities</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -40,5 +38,10 @@
             }
         </tbody>
     </table>
+    <div class="nav-item mb-2">
+        <a class="nav-link d-flex align-items-center blue-text" asp-controller="Home" asp-action="Dashboard">
+            <i class="fas fa-users mr-2"></i> Dashboard
+        </a>
+    </div>
 </body>
 </html>
