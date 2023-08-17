@@ -21,6 +21,7 @@ namespace Volunteer_Management_System.Models
         public string EmergencyContactName { get; set; }
         public string EmergencyContactPhone { get; set; }
         public string EmergencyContactEmail { get; set; }
+        public string EmergencyContactAddress { get; set; }
         public bool DriversLicenseOnFile { get; set; }
         public bool SocialSecurityCardOnFile { get; set; }
         public string Status { get; set; }

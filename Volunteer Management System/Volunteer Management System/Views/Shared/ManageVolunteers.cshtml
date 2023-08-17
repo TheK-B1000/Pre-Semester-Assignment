@@ -17,14 +17,19 @@
 <body>
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Volunteer Management System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <a class="navbar-brand" href="#" style="padding-left: 50px;">Volunteer Management System</a>
+                    </div>
+                    <div class="col-md-9">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </nav>
-        <div class="col-md-3 black-bg sidebar">
-            <h1 class="text-center">Volunteer Management System Dashboard</h1>
-        </div>
     </header>
     <div class="container-fluid">
         <div class="row">
@@ -93,14 +98,13 @@
                     <thead>
                         <tr>
                             <th scope="col">
-                                <a href="#">Name</a> <!-- TODO add sorting functionality -->
+                                <a href="#">Name</a> 
                             </th>
                             <th scope="col">
-                                <a href="#">Username</a> <!-- TODO add sorting functionality -->
+                                <a href="#">Username</a> 
                             </th>
                             <th scope="col">
-                                <a href="#">Email</a> <!-- TODO add sorting functionality -->
-                            </th>
+                                <a href="#">Email</a> 
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -108,8 +112,7 @@
                             @foreach (var volunteer in Model)
                             {
                                 <tr>
-                                    <td>@volunteer.FirstName</td>
-                                    <td>@volunteer.LastName</td>
+                                    <td>@volunteer.FirstName @volunteer.LastName</td>             
                                     <td>@volunteer.Username</td>
                                     <td>@volunteer.Email</td>
                                     <td>

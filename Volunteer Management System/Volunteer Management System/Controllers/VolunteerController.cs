@@ -9,18 +9,11 @@ namespace Volunteer_Management_System.Controllers
 {
     public class VolunteerController : Controller
     {
-        private readonly IDatabaseRepository _databaseRepository;
-        private readonly DatabaseRepository _db = new DatabaseRepository();
 
-        public VolunteerController(IDatabaseRepository databaseRepository)
-        {
-            _databaseRepository = databaseRepository;
-        }
 
-        public IActionResult ManageVolunteers(string id)
+        public VolunteerController()
         {
-            List<Volunteer> volunteers = _db.GetVolunteers(id);
-            return View(volunteers);
+ 
         }
 
         public IActionResult ChangeVolunteerFilter(string filter)
@@ -48,25 +41,14 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult VolunteerAdded(Volunteer volunteer)
-        {
-            if (ModelState.IsValid)
-            {
-                _databaseRepository.AddVolunteer(volunteer);
-                return RedirectToAction("VolunteerAdded");
-            }
-            return View(volunteer);
-        }
 
-        public IActionResult DeleteVolunteer(string id)
+        public IActionResult DeleteVolunteer()
         {
-            _databaseRepository.DeleteVolunteer(id);
-            return RedirectToAction("ManageVolunteers");
+            return View();
         }
-        public IActionResult SearchVolunteers(string query)
+        public IActionResult SearchVolunteers()
         {
-            return View("ManageVolunteers");
+            return View();
         }
     }
 }
