@@ -116,6 +116,52 @@ namespace Volunteer_Management_System.Models
             }
         };
 
+        private List<Admin> admins = new List<Admin>
+        {
+            new Admin
+            {
+                AdminID = "A001",
+                Title = "CEO",
+                Username = "Corey Norman",
+                Password= "admin",
+                Email = "Corey@gmail.com"
+
+            },
+             new Admin
+            {
+                AdminID = "A002",
+                Title = "CEO",
+                Username = "Benjamin Gropman",
+                Password= "admin",
+                Email = "Ben@gmail.com"
+
+            },
+              new Admin
+            {
+                AdminID = "A003",
+                Title = "CEO",
+                Username = "Beny Farfan",
+                Password= "admin",
+                Email = "Beny@gmail.com"
+
+            },
+               new Admin
+            {
+                AdminID = "A004",
+                Title = "CEO",
+                Username = "K-B Corbett",
+                Password= "admin",
+                Email = "KB@gmail.com"
+
+            }
+
+        };
+
+        public IEnumerable<Admin> GetAllAdmins()
+        {
+            return admins;
+        }
+
         public IEnumerable<Volunteer> GetAllVolunteers()
         {
             return volunteers;
