@@ -40,8 +40,8 @@
                     </div>
 
                     <!-- Search Bar -->
-                    <form class="form-inline mt-2 mb-4 d-flex justify-content-center">
-                        <input class="form-control w-75" type="text" placeholder="Search" aria-label="Search">
+                    <form class="form-inline mt-2 mb-4 d-flex justify-content-center" onsubmit="return handleSearch()">
+                        <input class="form-control w-75" type="text" id="searchInput" placeholder="Search" aria-label="Search">
                         <button class="btn btn-dark ml-2" type="submit">Search</button>
                     </form>
 
