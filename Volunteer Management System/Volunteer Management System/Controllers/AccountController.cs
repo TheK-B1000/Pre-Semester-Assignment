@@ -43,8 +43,8 @@ namespace Volunteer_Management_System.Controllers
 
         public IActionResult Profile()
         {
-            var admins = _databaseRepository.GetAllAdmins();
-            return View(admins);
+            var admin = _databaseRepository.GetLoggedInAdmin();
+            return View(admin);
         }
 
         public IActionResult ManageVolunteers()
