@@ -21,6 +21,7 @@ namespace Volunteer_Management_System.Controllers
         {
             return View();
         }
+
         public IActionResult ManageVolunteers()
         {
             var volunteers = _databaseRepository.GetAllVolunteers();
