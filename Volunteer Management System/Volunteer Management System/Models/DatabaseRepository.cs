@@ -119,7 +119,7 @@ namespace Volunteer_Management_System.Models
         private List<Admin> admins = new List<Admin>
         {
             new Admin
-            {   
+            {
                 AdminID = "A001",
                 Title = "CEO",
                 Username = "Corey Norman",
@@ -161,6 +161,7 @@ namespace Volunteer_Management_System.Models
         {
             return admins;
         }
+
         public IEnumerable<Volunteer> GetAllVolunteers()
         {
             return volunteers;
