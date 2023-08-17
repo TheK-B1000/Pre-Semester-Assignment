@@ -154,21 +154,6 @@
         </div>
     </div>
 
-    <script>
-        function handleSearch() {
-            const inputValue = document.getElementById("searchInput").value.toLowerCase();
-
-            if (inputValue.includes("add volunteer")) {
-                window.location.href = '@Url.Action("AddVolunteer", "Volunteer")';
-                return false;
-            } else if (inputValue.includes("add opportunity")) {
-                window.location.href = '@Url.Action("AddOpportunity", "Opportunity")';
-                return false;
-            }
-
-            return false;
-        }
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
     <script src="~/js/AdminTemplate.js"></script>
@@ -178,5 +163,10 @@
     <script src="~/js/Dropdown.js"></script>
     <script src="~/js/Layout.js"></script>
     <script src="~/js/PushMenu.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#sidebarSearchForm').sidebarSearch();
+        });
+    </script>
 </body>
 </html>

@@ -9,8 +9,6 @@ namespace Volunteer_Management_System.Controllers
 {
     public class VolunteerController : Controller
     {
-
-
         public VolunteerController()
         {
  
@@ -40,7 +38,6 @@ namespace Volunteer_Management_System.Controllers
         {
             return View();
         }
-
 
         public IActionResult DeleteVolunteer()
         {
