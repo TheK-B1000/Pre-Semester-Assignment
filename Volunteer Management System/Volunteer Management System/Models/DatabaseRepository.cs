@@ -183,5 +183,17 @@ namespace Volunteer_Management_System.Models
             return opportunities.Where(o => o.Center == preferredCenter);
         }
 
+        public IEnumerable<Volunteer> GetMatchedVolunteersForOpportunity(string opportunityId)
+        {
+            var opportunity = opportunities.FirstOrDefault(o => o.OpportunityID == opportunityId);
+            if (opportunity == null)
+            {
+                return new List<Volunteer>();
+            }
+
+            var preferredCenter = opportunity.Center;
+            return volunteers.Where(v => v.Centers == preferredCenter);
+        }
+
     }
 }
