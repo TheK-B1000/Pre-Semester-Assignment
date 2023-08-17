@@ -1,0 +1,44 @@
+﻿﻿@{
+    Layout = null;
+}
+@model List<Volunteer_Management_System.Models.Admin>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Profile</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>AdminID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Title</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var admin in Model)
+            {
+                <tr>
+                    <td>@admin.AdminID</td>
+                    <td>@admin.Username</td>
+                    <td>@admin.Password</td>
+                    <td>@admin.Title</td>
+                    <td>@admin.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
