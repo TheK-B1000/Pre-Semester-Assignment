@@ -41,10 +41,11 @@
                     </div>
 
                     <!-- Search Bar -->
-                    <form class="form-inline mt-2 mb-4 d-flex justify-content-center">
-                        <input class="form-control w-75" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-dark ml-2" type="submit">Search</button> 
+                    <form class="form-inline mt-2 mb-4 d-flex justify-content-center" onsubmit="return handleSearch()">
+                        <input class="form-control w-75" type="text" id="searchInput" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-dark ml-2" type="submit">Search</button>
                     </form>
+
 
                     <!-- Navigation Links -->
                     <ul class="nav flex-column mt-4 pl-3">
@@ -79,8 +80,8 @@
                             <div class="card">
                                 <img src="C:\Users\K-B05\OneDrive\Desktop\K-B Folder\UNF\Senior Project\Pre-Semester-Assignment\Volunteer Management System\Volunteer Management System\wwwroot\img\Vol001.png" class="card-img-top" alt="Volunteer 1">
                                 <div class="card-body">
-                                    <h5 class="card-title">Volunteer 1</h5>
-                                    <p class="card-text">Description about Volunteer 1.</p>
+                                    <h5 class="card-title">Paula Jones</h5>
+                                    <p class="card-text">Her enthusiasm and deep knowledge about marine life inspire many, turning first-time volunteers into regulars.</p>
                                 </div>
                             </div>
                         </div>
@@ -90,8 +91,8 @@
                             <div class="card">
                                 <img src="path/to/volunteer2.jpg" class="card-img-top" alt="Volunteer 2">
                                 <div class="card-body">
-                                    <h5 class="card-title">Volunteer 2</h5>
-                                    <p class="card-text">Description about Volunteer 2.</p>
+                                    <h5 class="card-title">Nathan Drake</h5>
+                                    <p class="card-text">His jovial laughter is infectious, making even the busiest days seem brighter for everyone around him.</p>
                                 </div>
                             </div>
                         </div>
@@ -101,8 +102,8 @@
                             <div class="card">
                                 <img src="path/to/volunteer3.jpg" class="card-img-top" alt="Volunteer 3">
                                 <div class="card-body">
-                                    <h5 class="card-title">Volunteer 3</h5>
-                                    <p class="card-text">Description about Volunteer 3.</p>
+                                    <h5 class="card-title">Lyn Taylor</h5>
+                                    <p class="card-text">An advocate for urban green spaces, she's dedicated to ensuring parks are clean and safe for families to enjoy.</p>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +120,8 @@
                             <div class="card">
                                 <img src="path/to/opportunity1.jpg" class="card-img-top" alt="Opportunity 1">
                                 <div class="card-body">
-                                    <h5 class="card-title">Opportunity 1</h5>
-                                    <p class="card-text">Description about Opportunity 1.</p>
+                                    <h5 class="card-title">Park Cleanup</h5>
+                                    <p class="card-text">Connect with nature, foster community spirit, and contribute to a greener tomorrow.</p>
                                 </div>
                             </div>
                         </div>
@@ -130,8 +131,8 @@
                             <div class="card">
                                 <img src="path/to/opportunity2.jpg" class="card-img-top" alt="Opportunity 2">
                                 <div class="card-body">
-                                    <h5 class="card-title">Opportunity 2</h5>
-                                    <p class="card-text">Description about Opportunity 2.</p>
+                                    <h5 class="card-title">Food Bank</h5>
+                                    <p class="card-text">Dive into a hands-on experience that not only feeds the hungry but also nourishes your spirit of community service.</p>
                                 </div>
                             </div>
                         </div>
@@ -141,8 +142,8 @@
                             <div class="card">
                                 <img src="path/to/opportunity3.jpg" class="card-img-top" alt="Opportunity 3">
                                 <div class="card-body">
-                                    <h5 class="card-title">Opportunity 3</h5>
-                                    <p class="card-text">Description about Opportunity 3.</p>
+                                    <h5 class="card-title">Beach Cleanup</h5>
+                                    <p class="card-text">Grab a glove, make new friends, and leave a tangible impact on our natural marine treasure.</p>
                                 </div>
                             </div>
                         </div>
@@ -153,6 +154,21 @@
         </div>
     </div>
 
+    <script>
+        function handleSearch() {
+            const inputValue = document.getElementById("searchInput").value.toLowerCase();
+
+            if (inputValue.includes("add volunteer")) {
+                window.location.href = '@Url.Action("AddVolunteer", "Volunteer")';
+                return false;
+            } else if (inputValue.includes("add opportunity")) {
+                window.location.href = '@Url.Action("AddOpportunity", "Opportunity")';
+                return false;
+            }
+
+            return false;
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD5tr5Szkbe5FEnqF1eCZl3I" crossorigin="anonymous"></script>
     <script src="~/js/AdminTemplate.js"></script>
