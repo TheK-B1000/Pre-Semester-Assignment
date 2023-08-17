@@ -102,6 +102,17 @@ namespace Volunteer_Management_System.Models
                 Duration = TimeSpan.FromHours(4),
                 MaximumVolunteers = 30,
                 CurrentVolunteers = 10
+            },
+            new Opportunity
+            {
+                OpportunityID = "O003",
+                Name = "Food Bank",
+                Description = "Help give food to those in need.",
+                Center = "UNF Food Center",
+                Date = DateTime.Now.AddMonths(1),
+                Duration = TimeSpan.FromHours(3),
+                MaximumVolunteers = 40,
+                CurrentVolunteers = 10
             }
         };
 
