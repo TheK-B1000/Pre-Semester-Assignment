@@ -9,9 +9,11 @@ namespace Volunteer_Management_System.Controllers
 {
     public class VolunteerController : Controller
     {
-        public VolunteerController()
+        private readonly IDatabaseRepository _databaseRepository;
+
+        public VolunteerController(IDatabaseRepository databaseRepository)
         {
- 
+            _databaseRepository = databaseRepository;
         }
 
         public IActionResult ChangeVolunteerFilter(string filter)
@@ -29,10 +31,25 @@ namespace Volunteer_Management_System.Controllers
             return View();
         }
 
+
         public IActionResult EditVolunteer()
         {
-            return View();
+            var volunteers = _databaseRepository.GetAllVolunteers();
+            return View(volunteers);
         }
+
+        public IActionResult ViewOpportunityMatches(string volunteerId)
+        {
+            var matchedOpportunities = _databaseRepository.GetMatchedOpportunitiesForVolunteer(volunteerId);
+            return View(matchedOpportunities); 
+        }
+
+        public IActionResult GetMatchedOpportunities(string volunteerId)
+        {
+            var matchedOpportunities = _databaseRepository.GetMatchedOpportunitiesForVolunteer(volunteerId);
+            return View("VolunteerMatches", matchedOpportunities);
+        }
+
 
         public IActionResult AddVolunteer()
         {
