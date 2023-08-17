@@ -4,5 +4,6 @@
     {
         IEnumerable<Volunteer> GetAllVolunteers();
         IEnumerable<Opportunity> GetAllOpportunities();
+        IEnumerable<Opportunity> GetMatchedOpportunitiesForVolunteer(string volunteerId);
     }
 }

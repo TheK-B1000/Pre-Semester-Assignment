@@ -125,5 +125,18 @@ namespace Volunteer_Management_System.Models
         {
             return opportunities;
         }
+
+        public IEnumerable<Opportunity> GetMatchedOpportunitiesForVolunteer(string volunteerId)
+        {
+            var volunteer = volunteers.FirstOrDefault(v => v.VolunteerID == volunteerId);
+            if (volunteer == null)
+            {
+                return new List<Opportunity>();
+            }
+
+            var preferredCenter = volunteer.Centers;
+            return opportunities.Where(o => o.Center == preferredCenter);
+        }
+
     }
 }
