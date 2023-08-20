@@ -9,19 +9,14 @@
     SidebarSearch.prototype = {
         init: function () {
             var self = this;
-
             this.element.on('submit', function (e) {
                 e.preventDefault();
                 self.handleSearch();
             });
         },
 
-        toggle: function () {
-            this.element.toggleClass('sidebar-search-open');
-        },
-
         handleSearch: function () {
-            var inputValue = $("#searchInput").val().toLowerCase();
+            const inputValue = this.element.find("#searchInput").val().toLowerCase();
 
             if (inputValue.includes("add volunteer")) {
                 window.location.href = '@Url.Action("AddVolunteer", "Volunteer")';

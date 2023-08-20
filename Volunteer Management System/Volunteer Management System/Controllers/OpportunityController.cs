@@ -3,24 +3,23 @@ using Volunteer_Management_System.Models;
 
 public class OpportunityController : Controller
 {
-    private readonly IOpportunityRepository _opportunityRepository;
+    private readonly IDatabaseRepository _databaseRepository;
 
-    public OpportunityController(IOpportunityRepository opportunityRepository)
+    public OpportunityController(IDatabaseRepository databaseRepository)
     {
-        _opportunityRepository = opportunityRepository;
+        _databaseRepository = databaseRepository;
     }
 
-
-    public IActionResult ManageOpportunities()
+    public IActionResult ViewVolunteerMatches(string opportunityId)
     {
-        var opportunities = _opportunityRepository.Opportunities;
-        return View(opportunities);
+        var matchedVolunteers = _databaseRepository.GetMatchedOpportunitiesForVolunteer(opportunityId);
+        return View(matchedVolunteers);
     }
 
-    public IActionResult ChangeOpportunityFilter(string filter)
+    public IActionResult GetMatchedVolunteers(string opportunityId)
     {
-        var opportunities = _opportunityRepository.FilterOpportunities(filter);
-        return View("ManageOpportunities", opportunities);
+        var matchedVolunteers = _databaseRepository.GetMatchedOpportunitiesForVolunteer(opportunityId);
+        return View("OpportunityMatches", matchedVolunteers);
     }
 
     public IActionResult OpportunityDetails()
@@ -34,17 +33,6 @@ public class OpportunityController : Controller
         return View();
     }
 
-    [HttpPost]
-    public IActionResult EditOpportunity(Opportunity opportunity)
-    {
-        if (ModelState.IsValid)
-        {
-            _opportunityRepository.UpdateOpportunity(opportunity);
-        }
-
-        return RedirectToAction("ManageOpportunities");
-    }
-
     public IActionResult AddOpportunity()
     {
         return View();
@@ -55,28 +43,15 @@ public class OpportunityController : Controller
         return View();
     }
 
-    [HttpPost]
-    public IActionResult AddOpportunity(Opportunity opportunity)
-    {
-        if (ModelState.IsValid)
-        {
-            _opportunityRepository.AddOpportunity(opportunity);
-        }
-
-        return RedirectToAction("ManageOpportunities");
-    }
 
     public IActionResult DeleteOpportunity(string id)
     {
-        _opportunityRepository.DeleteOpportunity(id);
-
-        return RedirectToAction("ManageOpportunities");
+        return View();
     }
 
     public IActionResult SearchOpportunities(string query)
     {
-        var opportunities = _opportunityRepository.SearchOpportunities(query);
-        return View("ManageOpportunities", opportunities);
+        return View();
     }
 
 }

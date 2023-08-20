@@ -11,16 +11,16 @@ namespace Volunteer_Management_System.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAdminRepository _adminRepository;
+        private readonly IDatabaseRepository _databaseRepository;
 
-        public AccountController(IAdminRepository adminRepository)
+        public AccountController(IDatabaseRepository databaseRepository)
         {
-            _adminRepository = adminRepository;
+            _databaseRepository = databaseRepository;
         }
 
         public IActionResult ManageAdmins()
         {
-            var admins = _adminRepository.Admins;
+            var admins = _databaseRepository.GetAllAdmins();
             return View(admins);
         }
 
@@ -33,33 +33,18 @@ namespace Volunteer_Management_System.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Admin admin)
         {
-            if (ModelState.IsValid)
-            {
-                var isValidUser = _adminRepository.Admins.Any(a => a.Username == admin.Username && a.Password == admin.Password);
-
-                if (isValidUser)
-                {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, admin.Username),
-                        new Claim(ClaimTypes.Role, "Administrator")
-                    };
-
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
-                    return RedirectToAction("ManageAdmins");
-                }
-
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
-            }
-
-            return View(admin);
+            return View();
         }
 
         public IActionResult SignUp()
         {
             return View();
+        }
+
+        public IActionResult Profile()
+        {
+            var admin = _databaseRepository.GetLoggedInAdmin();
+            return View(admin);
         }
 
         public IActionResult ManageVolunteers()

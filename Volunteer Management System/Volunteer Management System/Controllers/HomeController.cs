@@ -7,7 +7,6 @@ namespace Volunteer_Management_System.Controllers
     {
         private readonly IDatabaseRepository _databaseRepository;
 
-        // Inject IDatabaseRepository using constructor
         public HomeController(IDatabaseRepository databaseRepository)
         {
             _databaseRepository = databaseRepository;
@@ -22,6 +21,7 @@ namespace Volunteer_Management_System.Controllers
         {
             return View();
         }
+
         public IActionResult ManageVolunteers()
         {
             var volunteers = _databaseRepository.GetAllVolunteers();

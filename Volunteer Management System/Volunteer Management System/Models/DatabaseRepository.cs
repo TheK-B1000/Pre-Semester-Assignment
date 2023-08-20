@@ -102,8 +102,80 @@ namespace Volunteer_Management_System.Models
                 Duration = TimeSpan.FromHours(4),
                 MaximumVolunteers = 30,
                 CurrentVolunteers = 10
+            },
+            new Opportunity
+            {
+                OpportunityID = "O003",
+                Name = "Food Bank",
+                Description = "Help give food to those in need.",
+                Center = "UNF Food Center",
+                Date = DateTime.Now.AddMonths(1),
+                Duration = TimeSpan.FromHours(3),
+                MaximumVolunteers = 40,
+                CurrentVolunteers = 10
             }
         };
+
+        private List<Admin> admins = new List<Admin>
+        {
+            new Admin
+            {
+                AdminID = "A001",
+                Title = "CEO",
+                Username = "Corey Norman",
+                Password= "admin",
+                Email = "Corey@gmail.com"
+
+            },
+             new Admin
+            {
+                AdminID = "A002",
+                Title = "CEO",
+                Username = "Benjamin Gropman",
+                Password= "admin",
+                Email = "Ben@gmail.com"
+
+            },
+              new Admin
+            {
+                AdminID = "A003",
+                Title = "CEO",
+                Username = "Beny Farfan",
+                Password= "admin",
+                Email = "Beny@gmail.com"
+
+            },
+               new Admin
+            {
+                AdminID = "A004",
+                Title = "CEO",
+                Username = "K-B Corbett",
+                Password= "admin",
+                Email = "KB@gmail.com"
+
+            }
+
+        };
+
+        public IEnumerable<Admin> GetAllAdmins()
+        {
+            return admins;
+        }
+
+        Admin IDatabaseRepository.GetLoggedInAdmin()
+        {
+            var currentAdminId = GetCurrentAdminId();
+            return admins.FirstOrDefault(a => a.AdminID == currentAdminId);
+        }
+
+        private string GetCurrentAdminId()
+        {
+            return "A001";
+        }
+        public void AddVolunteer(Volunteer volunteer)
+        {
+            volunteers.Add(volunteer);
+        }
 
         public IEnumerable<Volunteer> GetAllVolunteers()
         {
@@ -114,5 +186,30 @@ namespace Volunteer_Management_System.Models
         {
             return opportunities;
         }
+
+        public IEnumerable<Opportunity> GetMatchedOpportunitiesForVolunteer(string volunteerId)
+        {
+            var volunteer = volunteers.FirstOrDefault(v => v.VolunteerID == volunteerId);
+            if (volunteer == null)
+            {
+                return new List<Opportunity>();
+            }
+
+            var preferredCenter = volunteer.Centers;
+            return opportunities.Where(o => o.Center == preferredCenter);
+        }
+
+        public IEnumerable<Volunteer> GetMatchedVolunteersForOpportunity(string opportunityId)
+        {
+            var opportunity = opportunities.FirstOrDefault(o => o.OpportunityID == opportunityId);
+            if (opportunity == null)
+            {
+                return new List<Volunteer>();
+            }
+
+            var preferredCenter = opportunity.Center;
+            return volunteers.Where(v => v.Centers == preferredCenter);
+        }
+
     }
 }
