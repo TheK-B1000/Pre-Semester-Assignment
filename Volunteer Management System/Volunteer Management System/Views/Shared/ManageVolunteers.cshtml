@@ -90,18 +90,19 @@
                 </div>
 
                 <!-- Search bar and filter dropdown -->
-                <div class="d-flex justify-content-between align-items-center w-100 mt-3">
-                    <input type="text" class="form-control" placeholder="Search volunteers">
-                    <select class="form-control ml-3">
-                        <option selected>Filter...</option>
-                        <option>Approved/Pending Approval</option>
-                        <option>Approved</option>
-                        <option>Pending Approval</option>
-                        <option>Disapproved</option>
-                        <option>Inactive</option>
-                        <option>All</option>
-                    </select>
-                </div>
+                    <div class="d-flex justify-content-between align-items-center w-100 mt-3">
+                        <input type="text" class="form-control" placeholder="Search volunteers">
+                        <!-- Assign an ID to the filter dropdown -->
+                        <select class="form-control ml-3" id="volunteerFilter">
+                            <option selected>Filter...</option>
+                            <option>Approved/Pending Approval</option>
+                            <option>Approved</option>
+                            <option>Pending Approval</option>
+                            <option>Disapproved</option>
+                            <option>Inactive</option>
+                            <option>All</option>
+                        </select>
+                    </div>
 
                 <table class="table mt-3">
                     <thead>
@@ -113,7 +114,8 @@
                                 <a href="#">Username</a> 
                             </th>
                             <th scope="col">
-                                <a href="#">Email</a> 
+                                <a href="#">Email</a>
+                            <th scope="col">Status</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -124,10 +126,11 @@
                                     <td>@volunteer.FirstName @volunteer.LastName</td>             
                                     <td>@volunteer.Username</td>
                                     <td>@volunteer.Email</td>
+                                    <td>@volunteer.Status</td>
                                     <td>
                                         <a asp-controller="Volunteer" asp-action="VolunteerDetails" asp-route-id="@volunteer.VolunteerID" class="btn btn-primary">Edit</a>
                                         <a asp-controller="Volunteer" asp-action="GetMatchedOpportunities" asp-route-volunteerId="@volunteer.VolunteerID" class="btn btn-success">View Matches</a>
-                                        <a asp-controller="Volunteer" asp-action="DeleteVolunteer" asp-route-id="@volunteer.VolunteerID" class="btn btn-danger">Delete</a>
+                                        <a onclick="deleteRow(this)" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             }
@@ -150,6 +153,56 @@
             }
 
             return false;
+        }
+    </script>
+    <script>
+        // Filtering function
+        function filterVolunteers() {
+            const filter = document.getElementById("volunteerFilter").value;
+            const rows = document.querySelectorAll("table tbody tr");
+
+            rows.forEach(row => {
+                const status = row.querySelector("td:nth-child(4)").textContent.trim();
+
+                let shouldDisplay = false;
+
+                switch (filter) {
+                    case 'Approved/Pending Approval':
+                        shouldDisplay = (status === 'Approved' || status === 'Pending Approval');
+                        break;
+                    case 'Approved':
+                        shouldDisplay = (status === 'Approved');
+                        break;
+                    case 'Pending Approval':
+                        shouldDisplay = (status === 'Pending Approval');
+                        break;
+                    case 'Disapproved':
+                        shouldDisplay = (status === 'Disapproved');
+                        break;
+                    case 'Inactive':
+                        shouldDisplay = (status === 'Inactive');
+                        break;
+                    case 'All':
+                        shouldDisplay = true;
+                        break;
+                }
+
+                if (shouldDisplay) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        // Attach event listener to the filter dropdown
+        document.getElementById("volunteerFilter").addEventListener("change", filterVolunteers);
+    </script>
+    <script>
+        function deleteRow(buttonElement) {
+            // Get the parent row of the button clicked
+            const row = buttonElement.closest("tr");
+            row.parentNode.removeChild(row);
         }
     </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
