@@ -27,7 +27,7 @@ namespace Volunteer_Management_System.Models
                 EmergencyContactEmail = "jane@gmail.com",
                 DriversLicenseOnFile = true,
                 SocialSecurityCardOnFile = true,
-                Status = "Active"
+                Status = "Approved"
             },
             new Volunteer
             {
@@ -103,6 +103,7 @@ namespace Volunteer_Management_System.Models
                 MaximumVolunteers = 30,
                 CurrentVolunteers = 10
             },
+
             new Opportunity
             {
                 OpportunityID = "O003",
@@ -113,6 +114,17 @@ namespace Volunteer_Management_System.Models
                 Duration = TimeSpan.FromHours(3),
                 MaximumVolunteers = 40,
                 CurrentVolunteers = 10
+            },
+            new Opportunity
+            {
+                OpportunityID = "O004",
+                Name = "Food Sorting",
+                Description = "Help sort food at the UNF food center.",
+                Center = "UNF Food Center",
+                Date = DateTime.Now.AddMonths(1),
+                Duration = TimeSpan.FromHours(3),
+                MaximumVolunteers = 40,
+                CurrentVolunteers = 8
             }
         };
 
